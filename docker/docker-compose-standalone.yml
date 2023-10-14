@@ -8,8 +8,10 @@ services:
       - SOLR_HOST=solr1
     ports:
       - 8983:8983
+    extra_hosts:
+      - "solr1:127.0.0.1"
     volumes:
-      - 'solr_stda_data1:/var/solr/data'
+      - 'solr_stda_data1:/var/solr'
       - 'solr_stda_share:/share'
     networks:
       - solr_stda
@@ -23,12 +25,26 @@ services:
       - SOLR_HOST=solr2
     ports:
       - 8984:8983
+    extra_hosts:
+      - "solr2:127.0.0.1"
     volumes:
-      - 'solr_stda_data2:/var/solr/data'
+      - 'solr_stda_data2:/var/solr'
       - 'solr_stda_share:/share'
     networks:
       - solr_stda
     restart: '${CONTAINER_RESTART}'
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    ports:
+      - 9080:9000
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: '${CONTAINER_RESTART}'
+
+volumes:
+  data:
 
 volumes:
   solr_stda_data1:
@@ -36,6 +52,8 @@ volumes:
   solr_stda_data2:
     driver: local
   solr_stda_share:
+    driver: local
+  portainer_data:
     driver: local
 
 networks:

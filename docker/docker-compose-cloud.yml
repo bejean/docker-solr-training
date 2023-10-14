@@ -62,7 +62,7 @@ services:
     ports:
       - 8983:8983
     volumes:
-      - 'solr_data1:/var/solr/data'
+      - 'solr_data1:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
@@ -78,7 +78,7 @@ services:
     ports:
       - 8984:8983
     volumes:
-      - 'solr_data2:/var/solr/data'
+      - 'solr_data2:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
@@ -94,7 +94,7 @@ services:
     ports:
       - 8985:8983
     volumes:
-      - 'solr_data3:/var/solr/data'
+      - 'solr_data3:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
@@ -110,7 +110,7 @@ services:
     ports:
       - 8986:8983
     volumes:
-      - 'solr_data4:/var/solr/data'
+      - 'solr_data4:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
