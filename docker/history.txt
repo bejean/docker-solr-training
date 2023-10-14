@@ -1,0 +1,428 @@
+2021/02/11-11:52:01 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-11:53:16 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-11:55:37 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-11:57:30 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-14:48:29 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:25:50 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-15:26:08 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:27:42 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:28:21 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:28:44 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-15:28:58 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:39:37 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-15:39:53 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:42:08 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:50:50 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-15:51:05 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:54:16 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-15:54:25 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/11-15:54:40 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/11-16:11:51 - ./de.sh -c semantiweb_monitoring_solr_exporter
+2021/02/11-16:12:06 - ./de.sh -c semantiweb_monitoring_zk_exporter
+2021/02/12-09:37:20 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/12-09:55:17 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/12-09:56:08 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/12-10:04:27 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/12-10:04:57 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/12-10:08:19 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/12-10:09:09 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-10:25:49 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-10:26:10 - ./de.sh -c semantiweb_monitoring_grafana
+2021/02/13-10:37:24 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-10:39:28 - ./de.sh -c semantiweb_monitoring_grafana
+2021/02/13-10:43:00 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/13-10:47:20 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-10:48:14 - ./de.sh -c semantiweb_monitoring_grafana
+2021/02/13-10:52:37 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/13-10:53:03 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-14:50:53 - ./de.sh -c semantiweb_monitoring_loki
+2021/02/13-14:51:00 - ./de.sh -c semantiweb_monitoring_loki -s sh
+2021/02/13-15:00:55 - ./de.sh -c semantiweb_monitoring_grafana
+2021/02/13-15:40:42 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/13-15:41:25 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-15:49:34 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-15:51:10 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-15:52:53 - ./de.sh -c semantiweb_solr_zk1
+2021/02/13-15:54:56 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/13-15:55:24 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-16:05:33 - ./de.sh -c semantiweb_monitoring_loki
+2021/02/13-16:05:38 - ./de.sh -c semantiweb_monitoring_loki -s sh
+2021/02/13-16:07:36 - ./de.sh -c semantiweb_monitoring_solr1
+2021/02/13-16:07:45 - ./de.sh -c semantiweb_solr_solr1
+2021/02/13-16:11:16 - ./de.sh -c semantiweb_monitoring_loki -s sh
+2021/02/13-16:12:34 - ./de.sh -c semantiweb_monitoring_grafana
+2021/02/13-16:18:59 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/13-16:19:22 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/13-16:28:36 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/16-17:20:26 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-17:25:03 - ./dc.sh -a logs -p semantiweb -m cloud
+2021/02/16-17:46:23 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-17:47:28 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-17:49:20 - ./de.sh -c semantiweb_monitoring_solr1
+2021/02/16-17:49:28 - ./de.sh -c semantiweb_monitoring_solr_solr1
+2021/02/16-17:49:35 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-17:56:50 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:03:07 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:04:55 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-18:09:59 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-18:10:50 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:15:01 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-18:15:23 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:17:57 - ./dc.sh -a logs -p semantiweb -m cloud
+2021/02/16-18:18:12 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-18:22:02 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-18:22:28 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:25:56 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-18:40:50 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-18:41:25 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:47:43 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-18:48:04 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-18:50:36 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-18:53:12 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/16-18:53:43 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-19:20:36 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-19:21:51 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/16-19:22:07 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-19:25:12 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/16-19:25:42 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/16-19:26:54 - ./de.sh -c semantiweb_solr_solr1
+2021/02/16-19:27:35 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/16-19:28:15 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-08:51:04 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-08:51:30 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-08:52:19 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-08:52:44 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-08:58:29 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-08:59:36 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-08:59:54 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-09:09:26 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-09:17:36 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-09:20:37 - ./de.sh -c semantiweb_solr_solr1
+2021/02/17-09:22:10 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-09:22:36 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-09:24:44 - ./de.sh -c semantiweb_solr_solr1
+2021/02/17-09:39:43 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-09:40:01 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-09:47:05 - ./de.sh -c semantiweb_solr_solr1
+2021/02/17-09:59:55 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-10:00:16 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-10:09:09 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-10:09:36 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-10:20:55 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/17-10:21:24 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-10:31:42 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-10:44:18 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-11:00:44 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/17-11:01:09 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-12:03:22 - ./de.sh -c semantiweb_solr_solr1
+2021/02/17-12:04:05 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/17-12:15:54 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/17-15:37:21 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/17-15:38:03 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-15:38:47 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-15:39:14 - ./de.sh -c semantiweb_monitoring_solr_exporter -u solr
+2021/02/17-15:45:06 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-15:46:10 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:00:59 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:01:12 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:04:30 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:05:14 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:05:49 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:15:08 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:17:49 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:19:34 - ./de.sh -c semantiweb_monitoring_solr_exporter -u solr
+2021/02/17-16:20:37 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/17-16:20:58 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/17-16:24:29 - ./de.sh -c semantiweb_monitoring_solr_exporter -u solr
+2021/02/17-16:29:45 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/18-10:41:33 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/18-10:47:21 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/18-10:47:47 - ./de.sh -c semantiweb_monitoring_solr_exporter -u solr
+2021/02/18-10:49:04 - ./de.sh -c semantiweb_monitoring_solr_exporter -u solr
+2021/02/18-10:49:10 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/18-10:49:14 - ./de.sh -c semantiweb_monitoring_solr_exporter -u solr
+2021/02/18-10:56:35 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/18-12:33:09 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/18-12:33:32 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/18-12:34:03 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/18-12:48:24 - ./dc.sh -a clean -p semantiweb -m cloud
+2021/02/18-12:50:18 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/18-12:50:29 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-09:43:45 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-09:45:46 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-10:51:26 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-11:17:11 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-11:19:41 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-12:36:33 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-12:37:44 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-12:41:43 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-12:42:52 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-12:49:49 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-12:57:11 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-12:57:18 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/02/19-19:04:18 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-19:15:40 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/19-19:26:22 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/22-09:12:07 - ./dc.sh -a up -p semantiweb -m cloud
+2021/02/22-14:32:19 - ./dc.sh -a down -p semantiweb -m cloud
+2021/02/22-14:33:43 - ./dc.sh -a up -p asterix87 -m cloud
+2021/02/22-14:34:32 - ./dc.sh -a clean -p asterix87 -m cloud
+2021/02/22-14:39:32 - ./dc.sh -a up -p asterix87 -m cloud
+2021/02/22-15:23:36 - ./de.sh -c asterix87_solr_solr1
+2021/02/22-15:23:47 - ./de.sh -c asterix87_solr_solr1 -u solr
+2021/02/22-15:37:27 - ./de.sh -c asterix87_solr_solr1
+2021/02/22-16:22:04 - ./dc.sh -a down -p asterix87 -m cloud
+2021/03/15-11:48:33 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-11:56:32 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-11:57:47 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-12:00:59 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-12:06:07 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-12:06:51 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-12:11:14 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-12:11:49 - ./de.sh -c infopro_monitoring_solr_exporter
+2021/03/15-12:16:07 - ./de.sh -c infopro_monitoring_solr_exporter -u solr
+2021/03/15-12:19:53 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-12:20:15 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-12:20:42 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-12:30:39 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-12:32:28 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-12:32:55 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-12:39:28 - ./de.sh -c infopro_solr_solr
+2021/03/15-14:25:53 - ./de.sh -c infopro_solr_solr _u solr
+2021/03/15-14:29:27 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/15-14:46:22 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-14:46:44 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-14:47:01 - ./de.sh -c infopro_solr_solr
+2021/03/15-14:48:03 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-14:48:08 - ./de.sh -c infopro_solr_solr
+2021/03/15-14:49:08 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-14:49:30 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-14:53:02 - ./de.sh -c infopro_solr_solr
+2021/03/15-15:04:26 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-15:04:47 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:09:28 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:09:34 - ./de.sh -c infopro_solr_solr
+2021/03/15-15:11:04 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-15:11:55 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:12:04 - ./de.sh -c infopro_solr_solr
+2021/03/15-15:15:01 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-15:15:29 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:27:57 - ./dc.sh -a down -p infopro -m standalone
+2021/03/15-15:36:26 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:43:39 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:44:33 - ./dc.sh -a up -p infopro -m standalone
+2021/03/15-15:45:10 - ./de.sh -c infopro_monitoring_solr_exporter
+2021/03/15-15:51:59 - ./dc.sh -a down -p infopro -m standalone
+2021/03/16-08:38:35 - ./dc.sh -a up -p infopro -m standalone
+2021/03/16-08:41:24 - ./dc.sh -a up -p infopro -m standalone
+2021/03/16-08:46:02 - ./de.sh -c infopro_solr_solr
+2021/03/16-09:14:56 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/17-09:19:39 - ./dc.sh -a up -p infopro -m standalone
+2021/03/17-09:30:29 - ./de.sh -c infopro_solr_solr
+2021/03/17-09:31:37 - ./de.sh -c infopro_solr_solr
+2021/03/17-09:33:10 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/17-11:18:05 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/17-15:14:34 - ./dc.sh -a down -p infopro -m standalone
+2021/03/22-19:22:33 - ./dc.sh -a up -p infopro -m standalone
+2021/03/22-19:22:47 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/23-13:59:24 - ./dc.sh -a up -p infopro -m standalone
+2021/03/23-13:59:31 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/24-10:40:48 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/24-10:55:32 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-10:57:35 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/24-11:01:57 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-11:05:46 - ./de.sh -c infoprocloud_solr_solr1
+2021/03/24-11:06:08 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-11:07:53 - ./de.sh -c infoprocloud_solr_solr1
+2021/03/24-11:09:15 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-11:12:10 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/24-11:12:54 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-14:18:33 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-18:49:49 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/24-19:02:59 - ./dc.sh -a up -p infopro -m standalone
+2021/03/24-19:04:58 - ./dc.sh -a down -p infoprocloud -m cloud
+2021/03/24-19:05:15 - ./dc.sh -a up -p infopro -m standalone
+2021/03/24-19:06:53 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/24-19:12:13 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/24-23:25:20 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/24-23:27:32 - ./dc.sh -a down -p infopro -m standalone
+2021/03/24-23:27:49 - ./dc.sh -a up -p infopro -m standalone
+2021/03/24-23:36:18 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/25-00:00:58 - ./dc.sh -a down -p infopro -m standalone
+2021/03/25-00:01:24 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/25-00:27:40 - ./dc.sh -a down -p infoprocloud -m cloud
+2021/03/25-00:27:59 - ./dc.sh -a up -p infopro -m standalone
+2021/03/25-00:31:10 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/25-09:23:23 - ./dc.sh -a down -p infopro -m standalone
+2021/03/25-09:23:43 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/25-09:26:37 - ./dc.sh -a down -p infoprocloud -m cloud
+2021/03/25-09:26:57 - ./dc.sh -a up -p infopro -m standalone
+2021/03/25-12:33:17 - ./dc.sh -a down -p infopro -m standalone
+2021/03/25-12:33:36 - ./dc.sh -a up -p infopro -m standalone
+2021/03/25-12:33:43 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/26-17:52:09 - ./dc.sh -a down -p infopro -m standalone
+2021/03/26-17:52:26 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/27-10:17:35 - ./dc.sh -a up -p infopro -m standalone
+2021/03/27-10:37:50 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/29-08:53:40 - ./dc.sh -a up -p infopro -m standalone
+2021/03/29-13:39:35 - ./dc.sh -a down -p infopro -m standalone
+2021/03/29-13:40:02 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/29-14:43:19 - ./dc.sh -a down -p infoprocloud -m cloud
+2021/03/29-14:43:34 - ./dc.sh -a up -p infopro -m standalone
+2021/03/29-14:58:04 - ./dc.sh -a down -p infopro -m standalone
+2021/03/29-14:58:20 - ./dc.sh -a up -p infoprocloud -m cloud
+2021/03/29-15:17:22 - ./de.sh -c infopro_solr_solr -u solr
+2021/03/29-15:17:32 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/29-16:19:26 - ./de.sh -c infoprocloud_solr_solr1 -u solr
+2021/03/29-17:52:11 - ./dc.sh -a down -p infopro -m standalone
+2021/03/29-17:52:17 - ./dc.sh -a down -p infopro -m cloud
+2021/03/29-17:52:30 - ./dc.sh -a down -p infoprocloud -m cloud
+2021/04/19-07:12:22 - ./dc.sh -a up -p edf -m cloud
+2021/04/19-07:15:45 - ./dc.sh -a down -p edf -m cloud
+2021/04/19-07:15:59 - ./dc.sh -a up -p edf -m cloud
+2021/04/19-07:16:53 - ./dc.sh -a down -p edf -m cloud
+2021/04/19-07:17:17 - ./dc.sh -a up -p edf -m cloud
+2021/04/19-07:19:31 - ./de.sh -c edf_solr1 -u solr
+2021/04/19-07:19:44 - ./de.sh -c edf_solr_solr1 -u solr
+2021/07/02-08:38:25 - ./dc.sh -a up -p edf -m cloud
+2021/07/02-11:13:45 - ./dc.sh -a down -p edf -m cloud
+2021/07/02-17:40:08 - ./dc.sh -a up -p edf -m cloud
+2021/08/05-09:35:31 - ./dc.sh -a up -p edf -m cloud
+2021/08/05-09:36:03 - ./dc.sh -a down -p edf -m cloud
+2021/08/05-09:37:24 - ./dc.sh -a up -p semantiweb -m cloud
+2021/08/05-09:39:41 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/08/05-09:41:19 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/08/05-10:12:40 - ./dc.sh -a down -p semantiweb -m cloud
+2021/08/09-14:42:46 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/08/09-14:42:55 - ./dc.sh -a up -p semantiweb -m cloud
+2021/08/09-14:44:22 - ./de.sh -c semantiweb_solr_solr1 -u solr
+2021/08/09-14:50:34 - ./dc.sh -a up -p semantiweb -m cloud
+2021/08/09-15:41:00 - ./dc.sh -a down -p semantiweb -m cloud
+2021/08/10-12:09:45 - ./dc.sh -a up -p semantiweb -m cloud
+2021/08/10-12:26:12 - ./dc.sh -a down -p semantiweb -m cloud
+2021/08/11-10:51:31 - ./dc.sh -a up -p alterway -m standalone
+2021/08/11-10:58:05 - ./de.sh -c alterway_solr_solr
+2021/08/11-14:29:02 - ./dc.sh -a down -p alterway -m standalone
+2021/10/05-16:32:46 - ./dc.sh -a up -p semantiweb -m cloud
+2021/10/05-16:54:46 - ./dc.sh -a down -p semantiweb -m cloud
+2021/12/20-09:06:52 - ./dc.sh -a up -p semantiweb -m cloud
+2021/12/20-09:11:05 - ./dc.sh -a down -p semantiweb -m cloud
+2021/12/21-08:09:25 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-08:09:31 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-08:11:15 - ./dc.sh -a logs -p edf7 -m cloud
+2021/12/21-08:11:28 - ./dc.sh -a logs -p edf7 -m cloud
+2021/12/21-08:12:35 - ./dc.sh -a logs -p edf7 -m cloud
+2021/12/21-08:14:20 - ./de.sh -c edf_solr_solr1
+2021/12/21-08:16:00 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-08:17:56 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-08:18:09 - ./dc.sh -a logs -p edf7 -m cloud
+2021/12/21-08:18:42 - ./de.sh -c edf_solr_solr1
+2021/12/21-08:18:48 - ./de.sh -c edf7_solr_solr1
+2021/12/21-08:27:11 - ./de.sh -c edf7_solr_solr1 -u solr
+2021/12/21-08:30:00 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-08:30:30 - ./de.sh -c edf7_solr_solr1 -u solr
+2021/12/21-08:36:00 - ./de.sh -c edf7_solr_solr1 -u solr
+2021/12/21-08:53:27 - ./de.sh -c edf7_solr_solr1 -u solr
+2021/12/21-08:55:19 - ./de.sh -c edf7_solr_solr1
+2021/12/21-08:55:56 - ./de.sh -c edf7_solr_solr2
+2021/12/21-08:56:13 - ./de.sh -c edf7_solr_solr3
+2021/12/21-08:56:25 - ./de.sh -c edf7_solr_solr4
+2021/12/21-08:56:50 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-08:57:11 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-08:59:46 - ./de.sh -c edf7_solr_solr1
+2021/12/21-09:08:27 - ./de.sh -c edf7_solr_solr2
+2021/12/21-09:10:40 - ./de.sh -c edf7_solr_solr4
+2021/12/21-09:14:06 - ./de.sh -c edf7_solr_solr3
+2021/12/21-09:14:19 - ./de.sh -c edf7_solr_solr4
+2021/12/21-09:14:28 - ./de.sh -c edf7_solr_solr3
+2021/12/21-09:14:42 - ./de.sh -c edf7_solr_solr2
+2021/12/21-09:14:56 - ./de.sh -c edf7_solr_solr1
+2021/12/21-09:15:14 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-09:16:12 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-09:33:00 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-12:42:59 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-12:51:03 - ./de.sh -c edf7_solr_solr1
+2021/12/21-14:01:45 - ./de.sh -c edf7_solr_zk1
+2021/12/21-14:41:14 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-19:49:45 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-19:51:14 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/21-19:52:09 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/21-19:52:23 - ./de.sh -c edf7_solr_solr1
+2021/12/21-19:54:26 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/22-12:01:14 - ./dc.sh -a up -p edf7 -m cloud
+2021/12/22-12:01:38 - ./de.sh -c edf7_solr_solr1
+2021/12/22-14:42:57 - ./dc.sh -a down -p edf7 -m cloud
+2021/12/22-14:46:28 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-14:51:27 - ./de.sh -c infopro_solr_solr1
+2021/12/22-14:51:29 - ./de.sh -c infopro_solr_solr
+2021/12/22-15:02:37 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:03:01 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:03:48 - ./de.sh -c infopro_solr_solr
+2021/12/22-15:13:20 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:20:54 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:21:49 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:22:21 - ./dc.sh -a logs -p infopro -m standalone
+2021/12/22-15:23:14 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:23:27 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:23:32 - ./dc.sh -a logs -p infopro -m standalone
+2021/12/22-15:23:35 - ./dc.sh -a logs -p infopro -m standalone
+2021/12/22-15:23:37 - ./dc.sh -a logs -p infopro -m standalone
+2021/12/22-15:23:39 - ./dc.sh -a logs -p infopro -m standalone
+2021/12/22-15:24:10 - ./de.sh -c infopro_solr_solr
+2021/12/22-15:27:09 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:27:24 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:27:36 - ./de.sh -c infopro_solr_solr
+2021/12/22-15:31:25 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:31:39 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:32:35 - ./de.sh -c infopro_solr_solr
+2021/12/22-15:36:06 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:36:20 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:36:27 - ./de.sh -c infopro_solr_solr
+2021/12/22-15:36:38 - ./dc.sh -a logs -p infopro -m standalone
+2021/12/22-15:41:53 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-15:43:04 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-15:43:16 - ./de.sh -c infopro_solr_solr
+2021/12/22-16:02:42 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-16:02:57 - ./dc.sh -a up -p infopro -m standalone
+2021/12/22-16:03:29 - ./de.sh -c infopro_solr_solr
+2021/12/22-16:06:18 - ./dc.sh -a down -p infopro -m standalone
+2021/12/22-16:06:33 - ./dc.sh -a up -p infopro -m standalone
+2022/01/03-12:26:37 - ./dc.sh -a up -p infopro -m standalone
+2022/01/03-12:27:56 - ./dc.sh -a up -p infopro -m standalone
+2022/01/03-12:31:07 - ./de.sh -c infopro_solr_solr
+2022/01/03-12:45:33 - ./dc.sh -a down -p infopro -m standalone
+2022/01/03-12:45:47 - ./dc.sh -a up -p infopro -m standalone
+2022/01/03-12:45:56 - ./dc.sh -a logs -p infopro -m standalone
+2022/01/03-12:45:59 - ./dc.sh -a logs -p infopro -m standalone
+2022/01/03-12:46:12 - ./dc.sh -a logs -p infopro -m standalone
+2022/01/03-12:46:27 - ./dc.sh -a logs -p infopro -m standalone
+2022/01/03-12:48:06 - ./de.sh -c infopro_solr_solr
+2022/01/03-12:49:08 - ./de.sh -c infopro_solr_solr
+2022/01/03-12:49:37 - ./dc.sh -a down -p infopro -m standalone
+2022/01/03-12:49:51 - ./dc.sh -a up -p infopro -m standalone
+2022/01/03-12:49:59 - ./de.sh -c infopro_solr_solr
+2022/01/03-12:51:12 - ./dc.sh -a down -p infopro -m standalone
+2022/01/03-12:51:25 - ./dc.sh -a up -p infopro -m standalone
+2022/01/03-12:51:35 - ./de.sh -c infopro_solr_solr
+2022/01/03-15:37:35 - ./dc.sh -a down -p infopro -m standalone
+2023/10/13-17:08:16 - ./de.sh -c training_solr_solr1
+2023/10/13-17:11:43 - ./de.sh -c training_solr_solr1
+2023/10/13-17:12:37 - ./de.sh -c training_solr_solr1 -u solr
+2023/10/13-17:24:35 - ./de.sh -c training_zk1
+2023/10/13-17:27:33 - ./de.sh -c training_solr1
+2023/10/13-17:28:10 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:28:24 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:32:27 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:32:33 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:35:10 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:35:41 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:35:51 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:36:04 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/13-17:36:12 - ./de.sh -c training_solr_solr1 -e cat /etc/default/solr.in.sh
+2023/10/14-11:55:11 - ./dc.sh -m stda -a up
+2023/10/14-11:55:19 - ./dc.sh -m stda -a clean
+2023/10/14-11:58:17 - ./dc.sh -m stda -a up
+2023/10/14-11:59:19 - ./dc.sh -m stda -a down
+2023/10/14-11:59:25 - ./dc.sh -m stda -a clean
+2023/10/14-12:03:35 - ./dc.sh -m stda -a clean
+2023/10/14-12:05:19 - ./dc.sh -m stda -a clean

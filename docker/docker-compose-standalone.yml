@@ -1,0 +1,46 @@
+version: '2.4'
+services:
+  solr_stda_1:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_stda_1'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr1
+    ports:
+      - 8983:8983
+    volumes:
+      - 'solr_stda_data1:/var/solr/data'
+      - 'solr_stda_share:/share'
+    networks:
+      - solr_stda
+    restart: '${CONTAINER_RESTART}'
+    
+  solr_stda_2:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_stda_2'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr2
+    ports:
+      - 8984:8983
+    volumes:
+      - 'solr_stda_data2:/var/solr/data'
+      - 'solr_stda_share:/share'
+    networks:
+      - solr_stda
+    restart: '${CONTAINER_RESTART}'
+
+volumes:
+  solr_stda_data1:
+    driver: local
+  solr_stda_data2:
+    driver: local
+  solr_stda_share:
+    driver: local
+
+networks:
+  solr_stda:
+    name: '${COMPOSE_PROJECT_NAME}_solr_stda'
+    driver: bridge
+
+    
