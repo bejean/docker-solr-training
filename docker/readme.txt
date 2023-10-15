@@ -1,126 +1,21 @@
-Démarrage de 3 serveurs ZK et 4 serveurs Solr
+---- Démarrer / arrêter / reseter
 
-    ./dc.sh test centos up --build -d
-    ./dc.sh test centos down
-
-
-    $ docker ps --format '{{.Names}}' | sort
-    $ ./de.sh test_zk1 zookeeper
-    $ ./de.sh test_solr1 solr    
+./dc.sh -m stda -a up
+./dc.sh -m stda -a down
+./dc.sh -m stda -a clean
 
 
-Démarage d'un serveur unique Solr
-    ./dc.sh test centos standalone up --build -d
-    ./dc.sh test centos standalone down
+---- Envoyer les données
 
-    ./de.sh test_solr solr
-
-
+docker cp data/conf-solr9 training_solr_stda_1:/share
+docker cp data/boamp_qualif-1.json training_solr_stda_1:/share
+./de.sh -c training_solr_stda_1 -e 'chown -R solr: /share/*'
 
 
+---- Créer collection et indexer
 
-
-
----
-./de.sh test_zk1
-
-cd /opt/zk/
-rm -f /opt/zk/log/*
-rm -f /opt/zk/data/zookeeper_server.pid 
-./init.d/zookeeper start
-
-
----
-./de.sh test_solr1
-
-cd /opt/solr/
-./init.d/solr start
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-===   ===
-
-cd /tmp/
-cp /opt/install/packages/solr-7.5.0.tgz .
-tar xzf solr-7.5.0.tgz 
-cd solr-7.5.0/bin/
-mkdir -p /opt/solr/solr
-mkdir -p /opt/solr/data
-rm -rf /opt/solr/solr/*
-rm -rf /opt/solr/data/*
-./install_solr_service.sh /tmp/solr-7.5.0.tgz -d /opt/solr/data -i /opt/solr/solr/
-
-
-
-cp /opt/install/packages/solr-7.6.0.tgz .
-tar xzf solr-7.6.0.tgz 
-cd solr-7.6.0/bin/
-./install_solr_service.sh /tmp/solr-7.6.0.tgz -d /opt/solr/data -i /opt/solr/solr/ -f
-
-
-
-
-==== ====
-
-sudo -i
-cd /tmp/
-cp /opt/install/packages/solr-7.5.0.tgz .
-tar xzf solr-7.5.0.tgz 
-cd solr-7.5.0/bin/
-./install_solr_service.sh /tmp/solr-7.5.0.tgz -i /opt/solr -d /opt/solr/cores -u solr -s solr -n
-
-
-cd /opt/solr/
-mv cores/logs .
-mv cores/data/* cores/.
-rmdir cores/data/
-
-
-SOLR_PID_DIR="/opt/solr/cores"
-SOLR_HOME="/opt/solr/cores"
-LOG4J_PROPS="/opt/solr/cores/log4j2.xml"
-SOLR_LOGS_DIR="/opt/solr/logs"
-SOLR_PORT="8983"
-
-/etc/init.d/solr start
-
-
-exit
-cd /opt/solr/solr
-bin/solr create_core -c test
-
-
-
-
-sudo -i
-cd /tmp/
-cp /opt/install/packages/solr-7.6.0.tgz .
-tar xzf solr-7.6.0.tgz 
-cd solr-7.6.0/bin/
-./install_solr_service.sh /tmp/solr-7.6.0.tgz -i /opt/solr -u solr -s solr -n -f
-/etc/init.d/solr start
-
+./de.sh -c training_solr_stda_1 -u solr -e 'bin/solr delete -c boamp -p 8983'
+./de.sh -c training_solr_stda_1 -u solr -e 'bin/solr create_core -c boamp -d /share/conf-solr9 -p 8983'
+./de.sh -c training_solr_stda_1 -u solr -e 'bin/post -c boamp /share/boamp_qualif-1.json'
 
 
