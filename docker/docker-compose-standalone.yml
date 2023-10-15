@@ -34,26 +34,12 @@ services:
       - solr_stda
     restart: '${CONTAINER_RESTART}'
 
-  portainer:
-    image: portainer/portainer-ce:latest
-    ports:
-      - 9080:9000
-    volumes:
-      - portainer_data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: '${CONTAINER_RESTART}'
-
-volumes:
-  data:
-
 volumes:
   solr_stda_data1:
     driver: local
   solr_stda_data2:
     driver: local
   solr_stda_share:
-    driver: local
-  portainer_data:
     driver: local
 
 networks:
