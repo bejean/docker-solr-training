@@ -48,5 +48,5 @@ docker cp data/boamp_qualif-1.json training_solr1:/share
 
 ./de.sh -c training_solr1 -u solr -e 'bin/solr delete -c boamp -p 8983'
 ./de.sh -c training_solr1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr9 -shards 2 -p 8983'
-./de.sh -c training_solr1 -u solr -e 'bin/post -c boamp /share/boamp_qualif-1.json'
+./de.sh -c training_solr1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/boamp_qualif-1.json'
 
