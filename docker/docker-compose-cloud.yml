@@ -52,12 +52,12 @@ services:
       - solr
     restart: '${CONTAINER_RESTART}'
 
-  solr1:
+  solr_d1:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr1'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d1'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr1
+      - SOLR_HOST=solr_d1
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
@@ -72,14 +72,14 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr11
+      - solr_c1
 
-  solr2:
+  solr_d2:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr2'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d2'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr2
+      - SOLR_HOST=solr_d2
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
@@ -94,14 +94,14 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr11
+      - solr_c1
 
-  solr3:
+  solr_d3:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr3'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d3'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr3
+      - SOLR_HOST=solr_d3
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
@@ -116,14 +116,14 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr11
+      - solr_c1
 
-  solr4:
+  solr_d4:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr4'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d4'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr4
+      - SOLR_HOST=solr_d4
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
@@ -138,20 +138,20 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr11
+      - solr_c1
 
-  solr11:
+  solr_c1:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr11'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_c1'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr11
+      - SOLR_HOST=solr_c1
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:preferred,coordinator:off
     ports:
       - 8993:8983
     volumes:
-      - 'solr_data11:/var/solr'
+      - 'solr_data_c1:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
@@ -161,18 +161,18 @@ services:
       - zk2
       - zk3
 
-  solr12:
+  solr_c2:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr12'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_c2'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr12
+      - SOLR_HOST=solr_c2
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:allowed,coordinator:on
     ports:
       - 8994:8983
     volumes:
-      - 'solr_data12:/var/solr'
+      - 'solr_data_c2:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
@@ -181,20 +181,20 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr11
+      - solr_c1
 
-  solr13:
+  solr_c3:
     build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr13'
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_c3'
     environment:
       - SOLR_HEAP
-      - SOLR_HOST=solr13
+      - SOLR_HOST=solr_c3
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:allowed,coordinator:on
     ports:
       - 8995:8983
     volumes:
-      - 'solr_data13:/var/solr'
+      - 'solr_data_c3:/var/solr'
       - 'solr_share:/share'
     networks:
       - solr
@@ -203,7 +203,8 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr11
+      - solr_c1
+
     
 volumes:
   zk1_data:
@@ -226,11 +227,11 @@ volumes:
     driver: local
   solr_data4:
     driver: local
-  solr_data11:
+  solr_data_c1:
     driver: local
-  solr_data12:
+  solr_data_c2:
     driver: local
-  solr_data13:
+  solr_data_c3:
     driver: local
   solr_share:
     driver: local
