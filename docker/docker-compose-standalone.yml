@@ -12,7 +12,7 @@ services:
       - "solr1:127.0.0.1"
     volumes:
       - 'solr_stda_data1:/var/solr'
-      - 'solr_stda_share:/share'
+      - './share:/share'
     networks:
       - solr_stda
     restart: '${CONTAINER_RESTART}'
@@ -29,7 +29,7 @@ services:
       - "solr2:127.0.0.1"
     volumes:
       - 'solr_stda_data2:/var/solr'
-      - 'solr_stda_share:/share'
+      - './share:/share'
     networks:
       - solr_stda
     restart: '${CONTAINER_RESTART}'
@@ -39,8 +39,7 @@ volumes:
     driver: local
   solr_stda_data2:
     driver: local
-  solr_stda_share:
-    driver: local
+
 
 networks:
   solr_stda:

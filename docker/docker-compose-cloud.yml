@@ -64,7 +64,7 @@ services:
       - 8983:8983
     volumes:
       - 'solr_data1:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'
@@ -86,7 +86,7 @@ services:
       - 8984:8983
     volumes:
       - 'solr_data2:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'
@@ -108,7 +108,7 @@ services:
       - 8985:8983
     volumes:
       - 'solr_data3:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'
@@ -130,7 +130,7 @@ services:
       - 8986:8983
     volumes:
       - 'solr_data4:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'
@@ -152,7 +152,7 @@ services:
       - 8993:8983
     volumes:
       - 'solr_data_c1:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'    
@@ -173,7 +173,7 @@ services:
       - 8994:8983
     volumes:
       - 'solr_data_c2:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'     
@@ -195,7 +195,7 @@ services:
       - 8995:8983
     volumes:
       - 'solr_data_c3:/var/solr'
-      - 'solr_share:/share'
+      - './share:/share'
     networks:
       - solr
     restart: '${CONTAINER_RESTART}'  
@@ -233,8 +233,7 @@ volumes:
     driver: local
   solr_data_c3:
     driver: local
-  solr_share:
-    driver: local
+
 
 networks:
   solr:
