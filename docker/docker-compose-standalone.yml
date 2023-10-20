@@ -1,6 +1,6 @@
 version: '2.4'
 services:
-  solr_stda_1:
+  solr-stda-1:
     build: solr
     container_name: '${COMPOSE_PROJECT_NAME}_solr_stda_1'
     environment:
@@ -17,7 +17,7 @@ services:
       - solr_stda
     restart: '${CONTAINER_RESTART}'
     
-  solr_stda_2:
+  solr-stda-2:
     build: solr
     container_name: '${COMPOSE_PROJECT_NAME}_solr_stda_2'
     environment:

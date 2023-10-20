@@ -39,16 +39,15 @@ Solrcloud
 
 --- Securiser Solr (optionnel)
 
-./de.sh -c training_solr1 -e 'bin/solr auth enable -type basicAuth -prompt true -z zk1:2181,zk2:2181,zk3:2181'
+./de.sh -c training_solr_d1 -e 'bin/solr auth enable -type basicAuth -prompt true -z zk1:2181,zk2:2181,zk3:2181'
 
 
 ---- Créer collection et indexer
 
-./de.sh -c training_solr1 -e 'chmod -R go+r /share'
-./de.sh -c training_solr1 -e 'find /share -type d -exec chmod +x {} \;'
+./de.sh -c training_solr_d1 -e 'chmod -R go+r /share'
+./de.sh -c training_solr_d1 -e 'find /share -type d -exec chmod +x {} \;'
 
-./de.sh -c training_solr1 -u solr -e 'bin/solr delete -c boamp -p 8983'
-./de.sh -c training_solr1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr9 -shards 2 -p 8983'
-./de.sh -c training_solr1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/boamp_qualif-1.json'
-./de.sh -c training_solr1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/json_qualif'
-./de.sh -c training_solr1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/json'
+./de.sh -c training_solr_d1 -u solr -e 'bin/solr delete -c boamp -p 8983'
+./de.sh -c training_solr_d1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr9 -shards 2 -p 8983'
+./de.sh -c training_solr_d1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/json_qualif'
+./de.sh -c training_solr_d1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/json'
