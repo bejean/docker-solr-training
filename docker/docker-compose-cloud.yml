@@ -9,7 +9,7 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
       ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
       ZOO_AUTOPURGE_PURGEINTERVAL: 1
-      JVMFLAGS: -Xmx256m
+      JVMFLAGS: -Xmx128m
     ports:
       - 2181:2181
     volumes:
@@ -27,6 +27,7 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
       ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
       ZOO_AUTOPURGE_PURGEINTERVAL: 1
+      JVMFLAGS: -Xmx128m
     ports:
       - 2182:2181
     volumes:
@@ -44,6 +45,7 @@ services:
       ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
       ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
       ZOO_AUTOPURGE_PURGEINTERVAL: 1
+      JVMFLAGS: -Xmx128m
     ports:
       - 2183:2181
     volumes:
@@ -145,7 +147,7 @@ services:
     build: solr
     container_name: '${COMPOSE_PROJECT_NAME}_solr_c1'
     environment:
-      - SOLR_HEAP
+      - SOLR_HEAP=${SOLR_HEAP_COORD_OVERSEED}
       - SOLR_HOST=solr-c1
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:preferred,coordinator:off
@@ -166,7 +168,7 @@ services:
     build: solr
     container_name: '${COMPOSE_PROJECT_NAME}_solr_c2'
     environment:
-      - SOLR_HEAP
+      - SOLR_HEAP=${SOLR_HEAP_COORD_OVERSEED}
       - SOLR_HOST=solr-c2
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:allowed,coordinator:on
@@ -188,7 +190,7 @@ services:
     build: solr
     container_name: '${COMPOSE_PROJECT_NAME}_solr_c3'
     environment:
-      - SOLR_HEAP
+      - SOLR_HEAP=${SOLR_HEAP_COORD_OVERSEED}
       - SOLR_HOST=solr-c3
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
       - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:allowed,coordinator:on
