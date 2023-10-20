@@ -4,7 +4,7 @@ usage(){
     echo "Usage : $0 -m mode -a action";
     echo ""
     echo "    -m mode           : solr mode (cloud | stda)";
-    echo "    -a action         : up | down | logs | clean";
+    echo "    -a action         : build | up | down | logs | clean";
     echo ""
     echo "  Example : $0 -m stda -a up"
     echo ""
@@ -38,7 +38,7 @@ if [ -z "$ACTION" ] ; then
     usage
 fi
 
-if [[ ! "$ACTION" =~ ^(up|down|logs|clean)$ ]]; then
+if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
     echo "ERROR: Unknown action!"
     usage
 fi
@@ -56,8 +56,12 @@ else
     COMPOSE_FILE="docker-compose-cloud.yml"
 fi
         
+if [ "$ACTION" == "build" ] ; then 
+    docker-compose -f $COMPOSE_FILE build 
+fi
+
 if [ "$ACTION" == "up" ] ; then 
-    docker-compose -f $COMPOSE_FILE up -d --build
+    docker-compose -f $COMPOSE_FILE up -d 
 fi
 
 if [ "$ACTION" == "down" ] ; then 
