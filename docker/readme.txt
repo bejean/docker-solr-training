@@ -22,7 +22,7 @@ docker cp data/boamp_qualif-1.json training_solr_stda_1:/share
 
 
 ./de.sh -c training_solr_stda_1 -u solr -e 'bin/solr delete -c boamp -p 8983'
-./de.sh -c training_solr_stda_1 -u solr -e 'bin/solr create_core -c boamp -d /share/conf-solr9 -p 8983'
+./de.sh -c training_solr_stda_1 -u solr -e 'bin/solr create_core -c boamp -d /share/conf-solr8 -p 8983'
 ./de.sh -c training_solr_stda_1 -u solr -e 'bin/post -c boamp /share/json_qualif'
 ./de.sh -c training_solr_stda_1 -u solr -e 'bin/post -c boamp /share/json'
 
@@ -48,6 +48,6 @@ Solrcloud
 ./de.sh -c training_solr_d1 -e 'find /share -type d -exec chmod +x {} \;'
 
 ./de.sh -c training_solr_d1 -u solr -e 'bin/solr delete -c boamp -p 8983'
-./de.sh -c training_solr_d1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr9 -shards 2 -p 8983'
-./de.sh -c training_solr_d1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/json_qualif'
-./de.sh -c training_solr_d1 -u solr -e 'bin/post [-u user:passwd] -c boamp /share/json'
+./de.sh -c training_solr_d1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr8 -shards 2 -p 8983'
+./de.sh -c training_solr_d1 -u solr -e 'bin/post -c boamp /share/json_qualif'
+./de.sh -c training_solr_d1 -u solr -e 'bin/post -c boamp /share/json'

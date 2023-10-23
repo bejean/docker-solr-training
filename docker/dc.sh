@@ -50,6 +50,18 @@ fi
 
 history "$*"
 
+if [ "$MODE" == "cloud9" ] ; then 
+    sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_9" .env
+    sed -i  "/FROM/c\FROM solr:9.4.0" solr/Dockerfile
+    sed -i  "/FROM/c\FROM zookeeper:3.8.1" zookeeper/Dockerfile
+else
+    sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_8" .env
+    sed -i "/FROM/c\FROM solr:8.11.2" solr/Dockerfile
+    sed -i "/FROM/c\FROM zookeeper:3.6.2" zookeeper/Dockerfile
+fi
+
+exit 0
+
 COMPOSE_FILE="docker-compose-$MODE.yml"
         
 if [ "$ACTION" == "build" ] ; then 
