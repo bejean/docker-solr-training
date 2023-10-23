@@ -60,8 +60,6 @@ else
     sed -i "/FROM/c\FROM zookeeper:3.6.2" zookeeper/Dockerfile
 fi
 
-exit 0
-
 COMPOSE_FILE="docker-compose-$MODE.yml"
         
 if [ "$ACTION" == "build" ] ; then 
