@@ -62,7 +62,6 @@ services:
       - SOLR_HEAP
       - SOLR_HOST=solr-d1
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
       - 8983:8983
     volumes:
@@ -75,7 +74,6 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr-c1
 
   solr-d2:
     build: solr
@@ -84,7 +82,6 @@ services:
       - SOLR_HEAP
       - SOLR_HOST=solr-d2
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
       - 8984:8983
     volumes:
@@ -97,7 +94,6 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr-c1
 
   solr-d3:
     build: solr
@@ -106,7 +102,6 @@ services:
       - SOLR_HEAP
       - SOLR_HOST=solr-d3
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
       - 8985:8983
     volumes:
@@ -119,7 +114,6 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr-c1
 
   solr-d4:
     build: solr
@@ -128,7 +122,6 @@ services:
       - SOLR_HEAP
       - SOLR_HOST=solr-d4
       - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:on,overseer:disallowed,coordinator:off
     ports:
       - 8986:8983
     volumes:
@@ -141,73 +134,6 @@ services:
       - zk1
       - zk2
       - zk3
-      - solr-c1
-
-  solr-c1:
-    build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr_c1'
-    environment:
-      - SOLR_HEAP=${SOLR_HEAP_COORD_OVERSEED}
-      - SOLR_HOST=solr-c1
-      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:preferred,coordinator:off
-    ports:
-      - 8993:8983
-    volumes:
-      - 'solr_data_c1:/var/solr'
-      - './share:/share'
-    networks:
-      - solr
-    restart: '${CONTAINER_RESTART}'    
-    depends_on:
-      - zk1
-      - zk2
-      - zk3
-
-  solr-c2:
-    build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr_c2'
-    environment:
-      - SOLR_HEAP=${SOLR_HEAP_COORD_OVERSEED}
-      - SOLR_HOST=solr-c2
-      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:allowed,coordinator:on
-    ports:
-      - 8994:8983
-    volumes:
-      - 'solr_data_c2:/var/solr'
-      - './share:/share'
-    networks:
-      - solr
-    restart: '${CONTAINER_RESTART}'     
-    depends_on:
-      - zk1
-      - zk2
-      - zk3
-      - solr-c1
-
-  solr-c3:
-    build: solr
-    container_name: '${COMPOSE_PROJECT_NAME}_solr_c3'
-    environment:
-      - SOLR_HEAP=${SOLR_HEAP_COORD_OVERSEED}
-      - SOLR_HOST=solr-c3
-      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
-      - SOLR_OPTS=-Dsolr.node.roles=data:off,overseer:allowed,coordinator:on
-    ports:
-      - 8995:8983
-    volumes:
-      - 'solr_data_c3:/var/solr'
-      - './share:/share'
-    networks:
-      - solr
-    restart: '${CONTAINER_RESTART}'  
-    depends_on:
-      - zk1
-      - zk2
-      - zk3
-      - solr-c1
-
     
 volumes:
   zk1_data:
@@ -230,13 +156,6 @@ volumes:
     driver: local
   solr_data4:
     driver: local
-  solr_data_c1:
-    driver: local
-  solr_data_c2:
-    driver: local
-  solr_data_c3:
-    driver: local
-
 
 networks:
   solr:

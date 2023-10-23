@@ -3,7 +3,7 @@ usage(){
     echo ""
     echo "Usage : $0 -m mode -a action";
     echo ""
-    echo "    -m mode           : solr mode (cloud | cloudsimple | stda)";
+    echo "    -m mode           : solr mode (cloud | cloud9 | stda)";
     echo "    -a action         : build | up | down | logs | clean";
     echo ""
     echo "  Example : $0 -m stda -a up"
@@ -43,7 +43,7 @@ if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
     usage
 fi
 
-if [[ ! "$MODE" =~ ^(cloud|cloudsimple|stda)$ ]]; then
+if [[ ! "$MODE" =~ ^(cloud|cloud9|stda)$ ]]; then
     echo "ERROR: Unknown mode!"
     usage
 fi
