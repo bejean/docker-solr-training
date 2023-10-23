@@ -3,7 +3,7 @@ usage(){
     echo ""
     echo "Usage : $0 -m mode -a action";
     echo ""
-    echo "    -m mode           : solr mode (cloud | stda)";
+    echo "    -m mode           : solr mode (cloud | cloudsimple | stda)";
     echo "    -a action         : build | up | down | logs | clean";
     echo ""
     echo "  Example : $0 -m stda -a up"
@@ -43,18 +43,14 @@ if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
     usage
 fi
 
-if [[ ! "$MODE" =~ ^(cloud|stda)$ ]]; then
+if [[ ! "$MODE" =~ ^(cloud|cloudsimple|stda)$ ]]; then
     echo "ERROR: Unknown mode!"
     usage
 fi
 
 history "$*"
 
-if [ "$MODE" == "stda" ] ; then 
-    COMPOSE_FILE="docker-compose-standalone.yml"
-else
-    COMPOSE_FILE="docker-compose-cloud.yml"
-fi
+COMPOSE_FILE="docker-compose-$MODE.yml"
         
 if [ "$ACTION" == "build" ] ; then 
     docker-compose -f $COMPOSE_FILE build 

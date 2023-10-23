@@ -1,0 +1,163 @@
+version: '2.4'
+services:
+  #https://hub.docker.com/_/zookeeper
+  zk1:
+    build: zookeeper
+    container_name: '${COMPOSE_PROJECT_NAME}_zk1'
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
+      ZOO_AUTOPURGE_PURGEINTERVAL: 1
+      JVMFLAGS: -Xmx128m
+    ports:
+      - 2181:2181
+    volumes:
+      - 'zk1_data:/data'
+      - 'zk1_data_log:/datalog'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+
+  zk2:
+    build: zookeeper
+    container_name: '${COMPOSE_PROJECT_NAME}_zk2'
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
+      ZOO_AUTOPURGE_PURGEINTERVAL: 1
+      JVMFLAGS: -Xmx128m
+    ports:
+      - 2182:2181
+    volumes:
+      - 'zk2_data:/data'
+      - 'zk2_data_log:/datalog'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+
+  zk3:
+    build: zookeeper
+    container_name: '${COMPOSE_PROJECT_NAME}_zk3'
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zk1:2888:3888;2181 server.2=zk2:2888:3888;2181 server.3=zk3:2888:3888;2181
+      ZOO_4LW_COMMANDS_WHITELIST: mntr,conf,ruok
+      ZOO_AUTOPURGE_PURGEINTERVAL: 1
+      JVMFLAGS: -Xmx128m
+    ports:
+      - 2183:2181
+    volumes:
+      - 'zk3_data:/data'
+      - 'zk3_data_log:/datalog'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+
+  solr-d1:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d1'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr-d1
+      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
+    ports:
+      - 8983:8983
+    volumes:
+      - 'solr_data1:/var/solr'
+      - './share:/share'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+    depends_on:
+      - zk1
+      - zk2
+      - zk3
+
+  solr-d2:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d2'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr-d2
+      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
+    ports:
+      - 8984:8983
+    volumes:
+      - 'solr_data2:/var/solr'
+      - './share:/share'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+    depends_on:
+      - zk1
+      - zk2
+      - zk3
+
+  solr-d3:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d3'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr-d3
+      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
+    ports:
+      - 8985:8983
+    volumes:
+      - 'solr_data3:/var/solr'
+      - './share:/share'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+    depends_on:
+      - zk1
+      - zk2
+      - zk3
+
+  solr-d4:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_d4'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr-d4
+      - ZK_HOST=zk1:2181,zk2:2181,zk3:2181
+    ports:
+      - 8986:8983
+    volumes:
+      - 'solr_data4:/var/solr'
+      - './share:/share'
+    networks:
+      - solr
+    restart: '${CONTAINER_RESTART}'
+    depends_on:
+      - zk1
+      - zk2
+      - zk3
+    
+volumes:
+  zk1_data:
+    driver: local
+  zk1_data_log:
+    driver: local
+  zk2_data:
+    driver: local
+  zk2_data_log:
+    driver: local
+  zk3_data:
+    driver: local
+  zk3_data_log:
+    driver: local
+  solr_data1:
+    driver: local
+  solr_data2:
+    driver: local
+  solr_data3:
+    driver: local
+  solr_data4:
+    driver: local
+
+networks:
+  solr:
+    name: '${COMPOSE_PROJECT_NAME}_solr'
+    driver: bridge
