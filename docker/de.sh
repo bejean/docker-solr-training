@@ -3,11 +3,11 @@
 usage(){
     echo ""
 
-    echo "Usage : $0 -c container_name [-u user] [-e command];"
+    echo "Usage : $0 -c container_name [-u user] [-e command]"
     echo ""
-    echo "    -c container_name : container name";
-    echo "    -u user           : user to log in (default: root)";
-    echo "    -e command        : command to execute in container (default: bash)";
+    echo "    -c container_name : container name (or container id)"
+    echo "    -u user           : user to log in (default: root)"
+    echo "    -e command        : command to execute in container (default: bash)"
     echo ""
     echo "  Examples : "
     echo "      $0 -c solr01 -u solr"

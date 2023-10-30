@@ -1,12 +1,14 @@
 #!/bin/bash
 usage(){
     echo ""
-    echo "Usage : $0 -m mode -a action";
+    echo "Usage : $0 [-m mode] [-v version] -a action"
     echo ""
-    echo "    -m mode           : solr mode (cloud | cloud9 | stda)";
-    echo "    -a action         : build | up | down | logs | clean";
+    echo "    -m mode           : solr mode    - cloud (default) | cloudext | stda"
+    echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
+    echo "    -v version        : solr version - 8 (default) | 9"
+    echo "    -a action         : action       - build | up | down | logs | clean | ps (default)"
     echo ""
-    echo "  Example : $0 -m stda -a up"
+    echo "  Example : $0 -m stda -v 8 -a up"
     echo ""
     exit 1
 }
@@ -20,22 +22,25 @@ if [ "$1" == "-h" ] ; then
     usage
 fi
 
-export MODE=
-export ACTION=
+export MODE=cloud
+export VERSION=8
+export ACTION=ps
+
 
 if [ $# -gt 1 ]; then
-    while getopts ":a:m:" opt; do
+    while getopts ":a:m:v:" opt; do
         case $opt in
             a) export ACTION=$OPTARG ;;
+            v) export VERSION=$OPTARG ;;
             m) export MODE=$OPTARG ;;
             *) usage "$1: unknown option" ;;
         esac
     done
 fi
 
-if [ -z "$ACTION" ] ; then
-    echo "ERROR : Missing parameter : -a action"
-    usage
+if [ "$ACTION" == "ps" ] ; then 
+    docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
+    exit 1
 fi
 
 if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
@@ -43,18 +48,22 @@ if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
     usage
 fi
 
-if [[ ! "$MODE" =~ ^(cloud|cloud9|stda)$ ]]; then
+if [[ ! "$MODE" =~ ^(cloud|cloudext|stda)$ ]]; then
     echo "ERROR: Unknown mode!"
     usage
 fi
 
 history "$*"
 
-if [ "$MODE" == "cloud9" ] ; then 
+if [ "$VERSION" == "9" ] ; then 
     sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_9" .env
     sed -i  "/FROM/c\FROM solr:9" solr/Dockerfile
     sed -i  "/FROM/c\FROM zookeeper:3.8.1" zookeeper/Dockerfile
 else
+    if [ "$MODE" == "cloudext" ] ; then 
+        echo "ERROR: cloudext mode requires version 9!"
+        usage
+    fi
     sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_8" .env
     sed -i "/FROM/c\FROM solr:8" solr/Dockerfile
     sed -i "/FROM/c\FROM zookeeper:3.6.2" zookeeper/Dockerfile

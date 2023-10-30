@@ -1,14 +1,19 @@
-version: '2.4'
+---
+version: '3.7'
 services:
   portainer:
     image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    command: -H unix:///var/run/docker.sock
     ports:
-      - 9080:9000
+      - 9000:9000
     volumes:
-      - portainer_data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: '${CONTAINER_RESTART}'
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - dataportainer:/data
+    environment:
+      TZ: "Europe/Paris"
 
 volumes:
-  portainer_data:
-    driver: local
+  dataportainer:
