@@ -254,3 +254,7 @@
 # Some previous versions of Solr use an outdated log4j dependency. If you are unable to use at least log4j version 2.15.0
 # then enable the following setting to address CVE-2021-44228
 # SOLR_OPTS="$SOLR_OPTS -Dlog4j2.formatMsgNoLookups=true"
+
+#SOLR_AUTH_TYPE="basic"
+#SOLR_AUTHENTICATION_OPTS="-Dbasicauth=admin:admin"
+
