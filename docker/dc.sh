@@ -48,6 +48,11 @@ if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
     usage
 fi
 
+if [[ ! "$VERSION" =~ ^(8|9)$ ]]; then
+    echo "ERROR: Invalid version!"
+    usage
+fi
+
 if [[ ! "$MODE" =~ ^(cloud|cloudext|stda)$ ]]; then
     echo "ERROR: Unknown mode!"
     usage
@@ -56,18 +61,17 @@ fi
 history "$*"
 
 if [ "$VERSION" == "9" ] ; then 
-    sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_9" .env
-    sed -i  "/FROM/c\FROM solr:9" solr/Dockerfile
-    sed -i  "/FROM/c\FROM zookeeper:3.8.1" zookeeper/Dockerfile
+    sed -i "/FROM/c\FROM zookeeper:3.8.1" zookeeper/Dockerfile
 else
     if [ "$MODE" == "cloudext" ] ; then 
         echo "ERROR: cloudext mode requires version 9!"
         usage
     fi
-    sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_8" .env
-    sed -i "/FROM/c\FROM solr:8" solr/Dockerfile
     sed -i "/FROM/c\FROM zookeeper:3.6.2" zookeeper/Dockerfile
 fi
+sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_${VERSION}" .env
+sed -i "/SOLR_VERSION/c\SOLR_VERSION=${VERSION}" .env
+sed -i "/FROM/c\FROM solr:${VERSION}" solr/Dockerfile
 
 COMPOSE_FILE="docker-compose-$MODE.yml"
         
@@ -89,10 +93,18 @@ fi
 
 if [ "$ACTION" == "clean" ] ; then 
     if [ "$MODE" == "stda" ] ; then 
-    	docker volume rm $(docker volume ls -q | grep training | grep stda)
+    	if [ $(docker volume ls -q | grep "training_${VERSION}" | grep stda | head -c1 | wc -c) -ne 0 ] ; then
+    	    docker volume rm $(docker volume ls -q | grep "training_${VERSION}" | grep stda)
+    	else
+    	    echo "No volume to be deleted !"
+    	fi
     else
-    	docker volume rm $(docker volume ls -q | grep training | grep -v stda)
+    	if [ $(docker volume ls -q | grep "training_${VERSION}" | grep -v stda | head -c1 | wc -c) -ne 0 ] ; then
+    	    docker volume rm $(docker volume ls -q | grep "training_${VERSION}" | grep -v stda)
+    	else
+    	    echo "No volume to be deleted !"
+    	fi
     fi
-    docker-compose -f $COMPOSE_FILE rm -v
+    #docker-compose -f $COMPOSE_FILE rm -v
 fi
 
