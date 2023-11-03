@@ -257,4 +257,6 @@
 
 #SOLR_AUTH_TYPE="basic"
 #SOLR_AUTHENTICATION_OPTS="-Dbasicauth=admin:admin"
+#SOLR_OPTS="$SOLR_OPTS -Dsolr.allowPaths=/share/backup"
+
 
