@@ -6,7 +6,7 @@ usage(){
     echo "    -m mode           : solr mode    - cloud (default) | cloudext | stda"
     echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
     echo "    -v version        : solr version - 8 (default) | 9"
-    echo "    -a action         : action       - build | up | down | logs | clean | ps (default)"
+    echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
     echo ""
     echo "  Example : $0 -m stda -v 8 -a up"
     echo ""
@@ -43,7 +43,7 @@ if [ "$ACTION" == "ps" ] ; then
     exit 1
 fi
 
-if [[ ! "$ACTION" =~ ^(build|up|down|logs|clean)$ ]]; then
+if [[ ! "$ACTION" =~ ^(build|up|down|logs|logsf|clean)$ ]]; then
     echo "ERROR: Unknown action!"
     usage
 fi
@@ -89,6 +89,10 @@ fi
 
 if [ "$ACTION" == "logs" ] ; then 
     docker-compose -f $COMPOSE_FILE logs
+fi
+
+if [ "$ACTION" == "logsf" ] ; then 
+    docker-compose -f $COMPOSE_FILE logs -f
 fi
 
 if [ "$ACTION" == "clean" ] ; then 
