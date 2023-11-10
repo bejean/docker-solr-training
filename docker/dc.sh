@@ -5,10 +5,10 @@ usage(){
     echo ""
     echo "    -m mode           : solr mode    - cloud (default) | cloudext | stda"
     echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
-    echo "    -v version        : solr version - 8 (default) | 9"
+    echo "    -v version        : solr version - 8 | 8.x | 9 | 9.x | latest (default)"
     echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
     echo ""
-    echo "  Example : $0 -m stda -v 8 -a up"
+    echo "  Example : $0 -m stda -v 9.1 -a up"
     echo ""
     exit 1
 }
@@ -23,10 +23,8 @@ if [ "$1" == "-h" ] ; then
 fi
 
 export MODE=cloud
-export VERSION=8
+export VERSION=latest
 export ACTION=ps
-
-
 if [ $# -gt 1 ]; then
     while getopts ":a:m:v:" opt; do
         case $opt in
@@ -36,6 +34,12 @@ if [ $# -gt 1 ]; then
             *) usage "$1: unknown option" ;;
         esac
     done
+fi
+
+if [ "$VERSION" == "latest" ] ; then 
+    SOLR_MAJOR_VERSION="9"
+else
+    SOLR_MAJOR_VERSION="$(cut -d '.' -f 1 <<< "$VERSION")"
 fi
 
 if [ "$ACTION" == "ps" ] ; then 
@@ -48,7 +52,7 @@ if [[ ! "$ACTION" =~ ^(build|up|down|logs|logsf|clean)$ ]]; then
     usage
 fi
 
-if [[ ! "$VERSION" =~ ^(8|9)$ ]]; then
+if [[ ! "$SOLR_MAJOR_VERSION" =~ ^(8|9)$ ]]; then
     echo "ERROR: Invalid version!"
     usage
 fi
@@ -60,7 +64,7 @@ fi
 
 history "$*"
 
-if [ "$VERSION" == "9" ] ; then 
+if [ "$SOLR_MAJOR_VERSION" == "9" ] ; then 
     sed -i "/FROM/c\FROM zookeeper:3.8.1" zookeeper/Dockerfile
 else
     if [ "$MODE" == "cloudext" ] ; then 
@@ -69,8 +73,8 @@ else
     fi
     sed -i "/FROM/c\FROM zookeeper:3.6.2" zookeeper/Dockerfile
 fi
-sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_${VERSION}" .env
-sed -i "/SOLR_VERSION/c\SOLR_VERSION=${VERSION}" .env
+sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_${SOLR_MAJOR_VERSION}" .env
+sed -i "/SOLR_VERSION/c\SOLR_VERSION=${SOLR_MAJOR_VERSION}" .env
 sed -i "/FROM/c\FROM solr:${VERSION}" solr/Dockerfile
 
 COMPOSE_FILE="docker-compose-$MODE.yml"
@@ -80,7 +84,7 @@ if [ "$ACTION" == "build" ] ; then
 fi
 
 if [ "$ACTION" == "up" ] ; then 
-    docker-compose -f $COMPOSE_FILE up -d 
+    docker-compose -f $COMPOSE_FILE up -d --build
 fi
 
 if [ "$ACTION" == "down" ] ; then 
