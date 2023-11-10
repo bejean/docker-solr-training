@@ -255,8 +255,9 @@
 # then enable the following setting to address CVE-2021-44228
 # SOLR_OPTS="$SOLR_OPTS -Dlog4j2.formatMsgNoLookups=true"
 
+# --- Training ---
+SOLR_OPTS="$SOLR_OPTS -Dsolr.allowPaths=/share/backup"
 #SOLR_AUTH_TYPE="basic"
 #SOLR_AUTHENTICATION_OPTS="-Dbasicauth=admin:admin"
-#SOLR_OPTS="$SOLR_OPTS -Dsolr.allowPaths=/share/backup"
 
 
