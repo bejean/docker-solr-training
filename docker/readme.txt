@@ -40,6 +40,7 @@ Solrcloud 8
 
 ./de.sh -c training_8_solr_d1 -e 'chmod -R go+r /share'
 ./de.sh -c training_8_solr_d1 -e 'find /share -type d -exec chmod +x {} \;'
+./de.sh -c training_8_solr_d1 -e 'tar xzf /share/json.tgz -C /share'
 
 ./de.sh -c training_8_solr_d1 -u solr -e 'bin/solr delete -c boamp -p 8983'
 ./de.sh -c training_8_solr_d1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr8 -shards 2 -replicationFactor 2 -p 8983'
@@ -64,6 +65,7 @@ Solrcloud 9
 
 ./de.sh -c training_9_solr_d1 -e 'chmod -R go+r /share'
 ./de.sh -c training_9_solr_d1 -e 'find /share -type d -exec chmod +x {} \;'
+./de.sh -c training_9_solr_d1 -e 'tar xzf /share/json.tgz -C /share'
 
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/solr delete -c boamp -p 8983'
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/solr create_collection -c boamp -d /share/conf-solr9 -shards 2 -replicationFactor 2 -p 8983'

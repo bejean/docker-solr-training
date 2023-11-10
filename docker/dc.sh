@@ -105,14 +105,14 @@ fi
 
 if [ "$ACTION" == "clean" ] ; then 
     if [ "$MODE" == "stda" ] ; then 
-    	if [ $(docker volume ls -q | grep "training_${VERSION}" | grep stda | head -c1 | wc -c) -ne 0 ] ; then
-    	    docker volume rm $(docker volume ls -q | grep "training_${VERSION}" | grep stda)
+    	if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep stda | head -c1 | wc -c) -ne 0 ] ; then
+    	    docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep stda)
     	else
     	    echo "No volume to be deleted !"
     	fi
     else
-    	if [ $(docker volume ls -q | grep "training_${VERSION}" | grep -v stda | head -c1 | wc -c) -ne 0 ] ; then
-    	    docker volume rm $(docker volume ls -q | grep "training_${VERSION}" | grep -v stda)
+    	if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda | head -c1 | wc -c) -ne 0 ] ; then
+    	    docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda)
     	else
     	    echo "No volume to be deleted !"
     	fi

@@ -132,8 +132,11 @@
     <field name="descripteur" type="text_fr_minimal" indexed="true" stored="true" multiValued="true"/>
     <field name="type_marche" type="string" indexed="true" stored="true" multiValued="true"/>   
  
-    <copyField source="descripteur" dest="descripteur_str"/>
     <field name="descripteur_str" type="string" indexed="true" stored="false" multiValued="true"/>
+    <copyField source="descripteur" dest="descripteur_str"/>
+
+    <field name="spelling" type="text_general" indexed="true" stored="true" multiValued="true"/>
+    <copyField source="objet" dest="spelling"/>
 
     <!-- This can be enabled, in case the client does not know what fields may be searched. It isn't enabled by default
          because it's very expensive to index everything twice. -->
