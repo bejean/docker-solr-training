@@ -1,14 +1,14 @@
 #!/bin/bash
 usage(){
     echo ""
-    echo "Usage : $0 [-m mode] [-v version] -a action"
+    echo "Usage : $0 -a action [-m mode] [-v version] "
     echo ""
+    echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
     echo "    -m mode           : solr mode    - cloud (default) | cloudext | stda"
     echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
     echo "    -v version        : solr version - 8 | 8.x | 9 | 9.x | latest (default)"
-    echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
     echo ""
-    echo "  Example : $0 -m stda -v 9.1 -a up"
+    echo "  Example : $0 -a up -m stda -v 9.1"
     echo ""
     exit 1
 }
@@ -34,6 +34,10 @@ if [ $# -gt 1 ]; then
             *) usage "$1: unknown option" ;;
         esac
     done
+fi
+
+if [ "$VERSION" == "9" ] ; then 
+    VERSION="latest"
 fi
 
 if [ "$VERSION" == "latest" ] ; then 
@@ -65,7 +69,7 @@ fi
 history "$*"
 
 if [ "$SOLR_MAJOR_VERSION" == "9" ] ; then 
-    sed -i "/FROM/c\FROM zookeeper:3.8.1" zookeeper/Dockerfile
+    sed -i "/FROM/c\FROM zookeeper:3.9.0" zookeeper/Dockerfile
 else
     if [ "$MODE" == "cloudext" ] ; then 
         echo "ERROR: cloudext mode requires version 9!"
