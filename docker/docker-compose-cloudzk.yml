@@ -8,6 +8,7 @@ services:
       - SOLR_HOST=solr1
     ports:
       - 8983:8983
+      - 9983:9983
     volumes:
       - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'

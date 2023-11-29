@@ -6,6 +6,7 @@ usage(){
     echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
     echo "    -m mode           : solr mode    - cloud (default) | cloudext | cloudzk | stda"
     echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
+    echo "                        cloudzk mode means only one solr server in cloud mode and zookeeper embedded"
     echo "    -v version        : solr version - 8 | 8.x | 9 | 9.x | latest (default)"
     echo ""
     echo "  Example : $0 -a up -m stda -v 9.1"
