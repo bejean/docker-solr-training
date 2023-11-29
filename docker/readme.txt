@@ -7,19 +7,16 @@ Standalone
 ./dc.sh -m stda -a down
 ./dc.sh -m stda -a clean
 
-
 ---- Envoyer les données
 
 docker cp data/conf-solr9 training_8_solr_stda_1:/share
 docker cp data/boamp_qualif-1.json training_8_solr_stda_1:/share
 ./de.sh -c training_8_solr_stda_1 -e 'chown -R solr: /share/*'
 
-
 ---- Créer collection et indexer
 
 ./de.sh -c training_8_solr_stda_1 -e 'chmod -R go+r /share'
 ./de.sh -c training_8_solr_stda_1 -e 'find /share -type d -exec chmod +x {} \;'
-
 
 ./de.sh -c training_8_solr_stda_1 -u solr -e 'bin/solr delete -c boamp -p 8983'
 ./de.sh -c training_8_solr_stda_1 -u solr -e 'bin/solr create_core -c boamp -d /share/conf-solr8 -p 8983'

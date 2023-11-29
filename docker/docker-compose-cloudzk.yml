@@ -1,0 +1,35 @@
+version: '2.4'
+services:
+  solr-zk:
+    build: solr
+    container_name: '${COMPOSE_PROJECT_NAME}_solr_zk'
+    environment:
+      - SOLR_HEAP
+      - SOLR_HOST=solr1
+    ports:
+      - 8983:8983
+    volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
+      - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
+      - 'solr_zk_data:/var/solr'
+      - './share:/share'
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr
+      - start
+      - -c
+      - -f
+    networks:
+      - solr_zk
+    restart: '${CONTAINER_RESTART}'
+
+volumes:
+  solr_zk_data:
+    driver: local
+
+networks:
+  solr_zk:
+    name: '${COMPOSE_PROJECT_NAME}_solr_zk'
+    driver: bridge
+
+    

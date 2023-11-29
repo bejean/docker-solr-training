@@ -65,6 +65,7 @@ services:
     ports:
       - 8983:8983
     volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
       - 'solr_data1:/var/solr'
       - './share:/share'
@@ -86,6 +87,7 @@ services:
     ports:
       - 8984:8983
     volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
       - 'solr_data2:/var/solr'
       - './share:/share'
@@ -107,6 +109,7 @@ services:
     ports:
       - 8985:8983
     volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
       - 'solr_data3:/var/solr'
       - './share:/share'
@@ -128,6 +131,7 @@ services:
     ports:
       - 8986:8983
     volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
       - 'solr_data4:/var/solr'
       - './share:/share'

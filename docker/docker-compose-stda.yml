@@ -11,6 +11,7 @@ services:
     extra_hosts:
       - "solr1:127.0.0.1"
     volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
       - 'solr_stda_data1:/var/solr'
       - './share:/share'
@@ -29,6 +30,7 @@ services:
     extra_hosts:
       - "solr2:127.0.0.1"
     volumes:
+      - './solr/solr${SOLR_VERSION}/solr.xml:/var/solr/solr.xml'
       - './solr/solr${SOLR_VERSION}/solr.in.sh:/etc/default/solr.in.sh'
       - 'solr_stda_data2:/var/solr'
       - './share:/share'

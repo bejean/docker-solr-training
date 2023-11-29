@@ -4,7 +4,7 @@ usage(){
     echo "Usage : $0 -a action [-m mode] [-v version] "
     echo ""
     echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
-    echo "    -m mode           : solr mode    - cloud (default) | cloudext | stda"
+    echo "    -m mode           : solr mode    - cloud (default) | cloudext | cloudzk | stda"
     echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
     echo "    -v version        : solr version - 8 | 8.x | 9 | 9.x | latest (default)"
     echo ""
@@ -61,7 +61,7 @@ if [[ ! "$SOLR_MAJOR_VERSION" =~ ^(8|9)$ ]]; then
     usage
 fi
 
-if [[ ! "$MODE" =~ ^(cloud|cloudext|stda)$ ]]; then
+if [[ ! "$MODE" =~ ^(cloud|cloudext|stda|cloudzk)$ ]]; then
     echo "ERROR: Unknown mode!"
     usage
 fi
@@ -111,10 +111,18 @@ if [ "$ACTION" == "clean" ] ; then
     	    echo "No volume to be deleted !"
     	fi
     else
-    	if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda | head -c1 | wc -c) -ne 0 ] ; then
-    	    docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda)
+        if [ "$MODE" == "cloudzk" ] ; then 
+            if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep solr_zk | head -c1 | wc -c) -ne 0 ] ; then
+    	        docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep solr_zk)
+    	    else
+    	        echo "No volume to be deleted !"
+    	    fi
     	else
-    	    echo "No volume to be deleted !"
+    	    if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda | grep -v solr_zk | head -c1 | wc -c) -ne 0 ] ; then
+    	        docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda | grep -v solr_zk)
+    	    else
+    	        echo "No volume to be deleted !"
+    	    fi
     	fi
     fi
     #docker-compose -f $COMPOSE_FILE rm -v
