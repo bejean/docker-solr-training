@@ -51,8 +51,8 @@ history "$*"
 
 if [[ x$TRACE == "x1" ]] 
 then
-    echo "docker exec -i -u $USER -t $CONTAINER /bin/bash -c \"export COLUMNS=`tput cols`; export LINES=`tput lines`; exec $COMMAND\""
+    echo "docker exec -i -u $USER -t $CONTAINER /bin/bash -c \"exec $COMMAND\""
     exit 1
 fi
 
-docker exec -i -u $USER -t $CONTAINER /bin/bash -c "export COLUMNS=`tput cols`; export LINES=`tput lines`; exec $COMMAND"
+docker exec -i -u $USER -t $CONTAINER /bin/bash -c "export COLUMNS=10000; export LINES=10000; exec $COMMAND"
