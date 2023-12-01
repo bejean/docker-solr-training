@@ -1,15 +1,17 @@
 #!/bin/bash
 usage(){
     echo ""
-    echo "Usage : $0 -a action [-m mode] [-v version] "
+    echo "Usage : $0 -a action [-p project] [-m mode] [-v version] [-f]"
     echo ""
     echo "    -a action         : action       - build | up | down | logs | logsf | clean | ps (default)"
+    echo "    -p project        : project name (default : \"training\")"
     echo "    -m mode           : solr mode    - cloud (default) | cloudext | cloudzk | stda"
     echo "                        cloudext mode means with dedicated overseer and coordinator nodes"
     echo "                        cloudzk mode means only one solr server in cloud mode and zookeeper embedded"
     echo "    -v version        : solr version - 8 | 8.x | 9 | 9.x | latest (default)"
+    echo "    -f force (no prompt)"
     echo ""
-    echo "  Example : $0 -a up -m stda -v 9.1"
+    echo "  Example : $0 -a up -p demo -m stda -v 9.1"
     echo ""
     exit 1
 }
@@ -26,15 +28,24 @@ fi
 export MODE=cloud
 export VERSION=latest
 export ACTION=ps
+export PROJECT=training
+export FORCE=0
 if [ $# -gt 1 ]; then
-    while getopts ":a:m:v:" opt; do
+    while getopts ":a:m:v:p:f" opt; do
         case $opt in
             a) export ACTION=$OPTARG ;;
             v) export VERSION=$OPTARG ;;
             m) export MODE=$OPTARG ;;
+            p) export PROJECT=$OPTARG ;;
+            f) export FORCE=1 ;;
             *) usage "$1: unknown option" ;;
         esac
     done
+fi
+
+if [[ ! "$PROJECT" =~ ^[a-zA-Z0-9_]+$ ]]; then
+    echo "ERROR: project name can contain only alphanumeric characters and _ !"
+    usage
 fi
 
 if [ "$VERSION" == "9" ] ; then 
@@ -78,7 +89,7 @@ else
     fi
     sed -i "/FROM/c\FROM zookeeper:3.6.2" zookeeper/Dockerfile
 fi
-sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=training_${SOLR_MAJOR_VERSION}" .env
+sed -i "/COMPOSE_PROJECT_NAME/c\COMPOSE_PROJECT_NAME=${PROJECT}_${SOLR_MAJOR_VERSION}" .env
 sed -i "/SOLR_VERSION/c\SOLR_VERSION=${SOLR_MAJOR_VERSION}" .env
 sed -i "/FROM/c\FROM solr:${VERSION}" solr/Dockerfile
 
@@ -105,22 +116,31 @@ if [ "$ACTION" == "logsf" ] ; then
 fi
 
 if [ "$ACTION" == "clean" ] ; then 
+
+    if [ "$FORCE" == "0" ] ; then 
+        read -p "Are you sure you want delete all data for this project ? (Yy)" -n 1 -r
+        echo    # move to a new line
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            exit 0
+        fi
+    fi
+
     if [ "$MODE" == "stda" ] ; then 
-    	if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep stda | head -c1 | wc -c) -ne 0 ] ; then
-    	    docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep stda)
+    	if [ $(docker volume ls -q | grep "${PROJECT}_${SOLR_MAJOR_VERSION}" | grep stda | head -c1 | wc -c) -ne 0 ] ; then
+    	    docker volume rm $(docker volume ls -q | grep "${PROJECT}_${SOLR_MAJOR_VERSION}" | grep stda)
     	else
     	    echo "No volume to be deleted !"
     	fi
     else
         if [ "$MODE" == "cloudzk" ] ; then 
-            if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep solr_zk | head -c1 | wc -c) -ne 0 ] ; then
-    	        docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep solr_zk)
+            if [ $(docker volume ls -q | grep "${PROJECT}_${SOLR_MAJOR_VERSION}" | grep solr_zk | head -c1 | wc -c) -ne 0 ] ; then
+    	        docker volume rm $(docker volume ls -q | grep "${PROJECT}_${SOLR_MAJOR_VERSION}" | grep solr_zk)
     	    else
     	        echo "No volume to be deleted !"
     	    fi
     	else
-    	    if [ $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda | grep -v solr_zk | head -c1 | wc -c) -ne 0 ] ; then
-    	        docker volume rm $(docker volume ls -q | grep "training_${SOLR_MAJOR_VERSION}" | grep -v stda | grep -v solr_zk)
+    	    if [ $(docker volume ls -q | grep "${PROJECT}_${SOLR_MAJOR_VERSION}" | grep -v stda | grep -v solr_zk | head -c1 | wc -c) -ne 0 ] ; then
+    	        docker volume rm $(docker volume ls -q | grep "${PROJECT}_${SOLR_MAJOR_VERSION}" | grep -v stda | grep -v solr_zk)
     	    else
     	        echo "No volume to be deleted !"
     	    fi
