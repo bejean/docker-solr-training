@@ -1,0 +1,34 @@
+    "track":{
+      "rid":"solr-d3-42",
+      "EXECUTE_QUERY":{
+        "http://solr-d3:8983/solr/boamp_shard1_replica_n1/":{
+          "QTime":"38",
+          "ElapsedTime":"59",
+          "RequestPurpose":"GET_TOP_IDS,SET_TERM_STATS",
+          "NumFound":"7",
+          "Response":"{responseHeader={zkConnected=true, status=0, QTime=38, params={df=_text_, distrib=false, debug=[false, timing, track], fl=[id, score], shards.purpose=16388, start=0, fsv=true, q.op=OR, _forwardedCount=1, rows=10, rid=solr-d3-42, debug.explain.structured=true, version=2, q=objet:installation, omitHeader=false, requestPurpose=GET_TOP_IDS,SET_TERM_STATS, NOW=1697899709703, isShard=true, wt=javabin, debugQuery=false, useParams=, _=1697899504510}}
+        },
+        "http://solr-d4:8983/solr/boamp_shard2_replica_n2/":{
+          "QTime":"56",
+          "ElapsedTime":"67",
+          "RequestPurpose":"GET_TOP_IDS,SET_TERM_STATS",
+          "NumFound":"9",
+          "Response":"{responseHeader={zkConnected=true, status=0, QTime=56, params={df=_text_, distrib=false, debug=[false, timing, track], fl=[id, score], shards.purpose=16388, start=0, fsv=true, q.op=OR, _forwardedCount=1, rows=10, rid=solr-d3-42, debug.explain.structured=true, version=2, q=objet:installation, omitHeader=false, requestPurpose=GET_TOP_IDS,SET_TERM_STATS, NOW=1697899709703, isShard=true, wt=javabin, debugQuery=false, useParams=, _=1697899504510}}
+        }
+      },
+      "GET_FIELDS":{
+        "http://solr-d4:8983/solr/boamp_shard2_replica_n2/":{
+          "QTime":"62",
+          "ElapsedTime":"80",
+          "RequestPurpose":"GET_FIELDS,GET_DEBUG,SET_TERM_STATS",
+          "NumFound":"3",
+          "Response":"{responseHeader={zkConnected=true, status=0, QTime=62, params={df=_text_, distrib=false, debug=[timing, track], shards.purpose=16704, q.op=OR, _forwardedCount=1, rows=10, rid=solr-d3-42, debug.explain.structured=true, version=2, q=objet:installation, omitHeader=false, requestPurpose=GET_FIELDS,GET_DEBUG,SET_TERM_STATS, NOW=1697899709703, ids=22-2265,22-2397,22-1952, isShard=true, wt=javabin, debugQuery=true, useParams=, _=1697899504510}}
+
+        "http://solr-d3:8983/solr/boamp_shard1_replica_n1/":{
+          "QTime":"54",
+          "ElapsedTime":"84",
+          "RequestPurpose":"GET_FIELDS,GET_DEBUG,SET_TERM_STATS",
+          "NumFound":"7",
+          "Response":"{responseHeader={zkConnected=true, status=0, QTime=54, params={df=_text_, distrib=false, debug=[timing, track], shards.purpose=16704, q.op=OR, _forwardedCount=1, rows=10, rid=solr-d3-42, debug.explain.structured=true, version=2, q=objet:installation, omitHeader=false, requestPurpose=GET_FIELDS,GET_DEBUG,SET_TERM_STATS, NOW=1697899709703, ids=22-2066,22-2264,22-2140,22-559,22-2597,22-2398,22-2139, isShard=true, wt=javabin, debugQuery=true, useParams=, _=1697899504510}}"
+        }
+      }
