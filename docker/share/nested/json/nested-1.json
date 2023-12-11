@@ -1,0 +1,83 @@
+[
+    {
+        "id": "company1!company1",
+        "level": "company",
+        "company": "EDF",
+        "sector": ["Energie"],
+        "city": ["Paris"],
+        "country": "France",
+        "contact_lastname" : ["Durand","Dupond"],
+        "contact_firstname" : ["Julien","Pierre"],
+        "contact_departement" : ["Maintenance","Finance"],
+        "contact": [
+            {
+                "id": "company1!company1_contact1",
+                "level": "contact",
+                "contact.lastname": "Durand",
+                "contact.firstname": "Julien",
+                "contact.departement": "Maintenance"
+            },
+            {
+                "id": "company1!company1_contact2",
+                "level": "contact",
+                "contact.lastname": "Dupond",
+                "contact.firstname": "Pierre",
+                "contact.departement": "Finance"
+            }            
+        ]
+    },
+    {
+        "id": "company2!company2",
+        "level": "company",
+        "company": "ENGIE",
+        "sector": ["Energie"],
+        "city": ["Paris"],
+        "country": "France",
+        "contact_lastname" : ["Dupuis","Dujardin"],
+        "contact_firstname" : ["Laura","Jean"],
+        "contact_departement" : ["Design","Recherche"],
+        "contact": [
+            {
+                "id": "company2!company2_contact1",
+                "level": "contact",
+                "contact.lastname": "Dupuis",
+                "contact.firstname": "Laura",
+                "contact.departement": "Design"
+            },
+            {
+                "id": "company2!company2_contact2",
+                "level": "contact",
+                "contact.lastname": "Dujardin",
+                "contact.firstname": "Jean",
+                "contact.departement": "Recherche"
+            }  
+        ]
+    },
+    {
+        "id": "company3!company3",
+        "level": "company",
+        "company": "SNCF",
+        "sector": ["Transport"],
+        "city": ["Paris"],
+        "country": "France",
+        "contact_lastname" : ["Dupuis","Brel"],
+        "contact_firstname" : ["François","Jacques"],
+        "contact_departement" : ["Finance","Design"],
+        "contact": [
+            {
+                "id": "company3!company3_contact1",
+                "level": "contact",
+                "contact.lastname": "Dupuis",
+                "contact.firstname": "François",
+                "contact.departement": "Finance"
+            },
+            {
+                "id": "company3!company3_contact2",
+                "level": "contact",
+                "contact.lastname": "Brel",
+                "contact.firstname": "Jacques",
+                "contact.departement": "Design"
+            }  
+        ]
+    }
+]

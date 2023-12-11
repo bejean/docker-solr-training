@@ -1,0 +1,15 @@
+[
+    {
+        "id": "company4!company4",
+        "_root_": "company4!company4",
+        "contact": { "add": 
+            { 
+                "id": "company4!company4_contact1",
+                "level": "contact",
+                "contact.lastname": "Hinault",
+                "contact.firstname": "Bernard",
+                "contact.departement": "Direction"
+            } 
+        }
+    } 
+]

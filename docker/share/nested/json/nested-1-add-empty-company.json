@@ -1,0 +1,10 @@
+[
+    {
+        "id": "company4!company4",
+        "level": "company",
+        "company": "Alstom",
+        "sector": ["Transport"],
+        "city": ["Sochaux"],
+        "country": "France"
+    }
+]
