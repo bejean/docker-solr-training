@@ -1,0 +1,875 @@
+{
+	"info": {
+		"_postman_id": "5fdef696-64c6-495d-9937-4693d59e1cda",
+		"name": "Formation Solr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prise en main",
+			"item": [
+				{
+					"name": "Requête facet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&fl=objet,famille,score&indent=true&q.op=OR&q=objet:fourniture&rows=100&debugQuery=on&debug.explain.structured=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "fl",
+									"value": "objet,famille,score"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "objet:fourniture"
+								},
+								{
+									"key": "rows",
+									"value": "100"
+								},
+								{
+									"key": "debugQuery",
+									"value": "on"
+								},
+								{
+									"key": "debug.explain.structured",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q.op=OR&q=(objet:(fourniture OR restaurant OR lits) AND (descripteur:(restaurant OR equipements)))&rows=10&fl=objet,descripteur,type_marche,score&defType=lucene",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "(objet:(fourniture OR restaurant OR lits) AND (descripteur:(restaurant OR equipements)))"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "objet,descripteur,type_marche,score"
+								},
+								{
+									"key": "defType",
+									"value": "lucene"
+								},
+								{
+									"key": "fq",
+									"value": "type_marche:Services",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard 2 - Pondération terme",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q.op=OR&q=(objet:(fourniture OR restaurant OR lits^4) AND (descripteur:(restaurant OR equipements)))&rows=10&fl=*,score",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "fq",
+									"value": "type_marche:Services",
+									"disabled": true
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "(objet:(fourniture OR restaurant OR lits^4) AND (descripteur:(restaurant OR equipements)))"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "*,score"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edismax 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q=fourniture restaurant lits&rows=10&fl=objet,descripteur,type_marche,score&defType=edismax&qf=objet descripteur&mm=-1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q",
+									"value": "fourniture restaurant lits"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "objet,descripteur,type_marche,score"
+								},
+								{
+									"key": "defType",
+									"value": "edismax"
+								},
+								{
+									"key": "qf",
+									"value": "objet descripteur"
+								},
+								{
+									"key": "mm",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard 3 - df",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q.op=OR&q=(fourniture restaurant lits) AND (descripteur:(restaurant OR equipements))&rows=10&fl=objet,descripteur,type_marche,score&defType=lucene&df=objet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "(fourniture restaurant lits) AND (descripteur:(restaurant OR equipements))"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "objet,descripteur,type_marche,score"
+								},
+								{
+									"key": "defType",
+									"value": "lucene"
+								},
+								{
+									"key": "df",
+									"value": "objet"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard 4 - facet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q.op=OR&q=(objet:(fourniture OR restaurant OR lits) AND (descripteur:(restaurant OR equipements)))&rows=10&fl=objet,descripteur,type_marche,score&defType=lucene&facet=true&facet.field=famille",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "(objet:(fourniture OR restaurant OR lits) AND (descripteur:(restaurant OR equipements)))"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "objet,descripteur,type_marche,score"
+								},
+								{
+									"key": "defType",
+									"value": "lucene"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "facet.field",
+									"value": "famille"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard 5 - hl",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q.op=OR&q=(objet:(fourniture OR restaurant OR lits) AND (descripteur:(restaurant OR equipements)))&rows=10&fl=objet,descripteur,type_marche,score&defType=lucene&hl=true&hl.fl=objet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "(objet:(fourniture OR restaurant OR lits) AND (descripteur:(restaurant OR equipements)))"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "objet,descripteur,type_marche,score"
+								},
+								{
+									"key": "defType",
+									"value": "lucene"
+								},
+								{
+									"key": "hl",
+									"value": "true"
+								},
+								{
+									"key": "hl.fl",
+									"value": "objet"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Standard - Spellcheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp/select?facet.field=famille&facet=true&indent=true&q=maintennance&rows=10&fl=objet,descripteur,type_marche,score&defType=edismax&qf=objet&mm=-1&spellcheck=true&spellcheck.q=maintennance&spellcheck.count=10&spellcheck.extendedResults=true&spellcheck.collate=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp",
+								"select"
+							],
+							"query": [
+								{
+									"key": "facet.field",
+									"value": "famille"
+								},
+								{
+									"key": "facet",
+									"value": "true"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q",
+									"value": "maintennance"
+								},
+								{
+									"key": "rows",
+									"value": "10"
+								},
+								{
+									"key": "fl",
+									"value": "objet,descripteur,type_marche,score"
+								},
+								{
+									"key": "defType",
+									"value": "edismax"
+								},
+								{
+									"key": "qf",
+									"value": "objet"
+								},
+								{
+									"key": "mm",
+									"value": "-1"
+								},
+								{
+									"key": "spellcheck",
+									"value": "true"
+								},
+								{
+									"key": "spellcheck.q",
+									"value": "maintennance"
+								},
+								{
+									"key": "debug",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "spellcheck.count",
+									"value": "10"
+								},
+								{
+									"key": "spellcheck.extendedResults",
+									"value": "true"
+								},
+								{
+									"key": "spellcheck.collate",
+									"value": "true"
+								},
+								{
+									"key": "spellcheck.maxCollationTries",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "spellcheck.maxCollations",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Architecture avancée",
+			"item": [
+				{
+					"name": "routed 1 = off",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp_routed/select?fl=famille,[shard],score&indent=true&q.op=OR&q=objet:fourniture  OR objet:solution  OR objet:objet&debug.explain.structured=true&debugQuery=true&rows=100&fq=famille:JOUE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp_routed",
+								"select"
+							],
+							"query": [
+								{
+									"key": "fl",
+									"value": "famille,[shard],score"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "objet:fourniture  OR objet:solution  OR objet:objet"
+								},
+								{
+									"key": "debug.explain.structured",
+									"value": "true"
+								},
+								{
+									"key": "debugQuery",
+									"value": "true"
+								},
+								{
+									"key": "rows",
+									"value": "100"
+								},
+								{
+									"key": "fq",
+									"value": "famille:JOUE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "routed 2 = on",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/boamp_routed/select?fl=famille,[shard],score&indent=true&q.op=OR&q=objet:fourniture  OR objet:solution  OR objet:objet&debug.explain.structured=true&debugQuery=true&rows=100&fq=famille:JOUE&_route_=JOUE!",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"boamp_routed",
+								"select"
+							],
+							"query": [
+								{
+									"key": "fl",
+									"value": "famille,[shard],score"
+								},
+								{
+									"key": "indent",
+									"value": "true"
+								},
+								{
+									"key": "q.op",
+									"value": "OR"
+								},
+								{
+									"key": "q",
+									"value": "objet:fourniture  OR objet:solution  OR objet:objet"
+								},
+								{
+									"key": "debug.explain.structured",
+									"value": "true"
+								},
+								{
+									"key": "debugQuery",
+									"value": "true"
+								},
+								{
+									"key": "rows",
+									"value": "100"
+								},
+								{
+									"key": "fq",
+									"value": "famille:JOUE"
+								},
+								{
+									"key": "_route_",
+									"value": "JOUE!"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recherche avancée",
+			"item": [
+				{
+					"name": "Compagnie & contacts -> OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/select?indent=on&wt=json&q={!parent which=\"*:* -_nest_path_:*\" }+(contact.lastname:Dupuis AND contact.departement:Design)&fl=*,[child]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"select"
+							],
+							"query": [
+								{
+									"key": "indent",
+									"value": "on"
+								},
+								{
+									"key": "wt",
+									"value": "json"
+								},
+								{
+									"key": "q",
+									"value": "{!parent which=\"*:* -_nest_path_:*\" }+(contact.lastname:Dupuis AND contact.departement:Design)"
+								},
+								{
+									"key": "fl",
+									"value": "*,[child]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compagnie & contacts -> KO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/select?indent=on&wt=json&q=contact_lastname:Dupuis AND contact_departement:Design",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"select"
+							],
+							"query": [
+								{
+									"key": "indent",
+									"value": "on"
+								},
+								{
+									"key": "wt",
+									"value": "json"
+								},
+								{
+									"key": "q",
+									"value": "contact_lastname:Dupuis AND contact_departement:Design"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact & Compagnie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/select?indent=on&wt=json&q=_query_:\"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Dupuis)\" AND _query_:\"{!dismax qf=sector}Transport\"&fl=*,[child]",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"select"
+							],
+							"query": [
+								{
+									"key": "indent",
+									"value": "on"
+								},
+								{
+									"key": "wt",
+									"value": "json"
+								},
+								{
+									"key": "q",
+									"value": "_query_:\"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Dupuis)\" AND _query_:\"{!dismax qf=sector}Transport\""
+								},
+								{
+									"key": "fl",
+									"value": "*,[child]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact & Compagnie -> OK (JSON DSL)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  query: '{!parent which=\"*:* -_nest_path_:*\" }+(contact.lastname:Dupuis AND contact.departement:Design)',\n  limit: 10,\n  \"fields\": \"*,[child]\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact & Compagnie (JSON DSL)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  query: \"_query_:\\\"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Dupuis)\\\" AND _query_:\\\"{!dismax qf=sector}Transport\\\"\",\n  limit: 10,\n  fields: \"*,[child]\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/query?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"query"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact & Compagnie (JSON DSL) - Alternative",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!edismax qf=sector}Transport OR Energie\", \n        \"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Hinault OR contact.lastname:Jalabert)\" \n      ],\n      \"must_not\": [\n        \"{!lucene}city:Sochaux\"\n      ]      \n    }\n  },\n  \"fields\": \"*,[child]\",\n  \"limit\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/query?debug=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"query"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
