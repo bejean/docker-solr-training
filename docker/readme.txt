@@ -58,7 +58,7 @@ Solrcloud 9
 
 ./de.sh -c training_9_solr_d1 -e 'bin/solr auth enable -type basicAuth -prompt true -z zk1:2181,zk2:2181,zk3:2181'
 
----- Créer collection et indexer
+---- Créer collection BOAMP et indexer
 
 ./de.sh -c training_9_solr_d1 -e 'chmod -R go+r /share'
 ./de.sh -c training_9_solr_d1 -e 'find /share -type d -exec chmod +x {} \;'
@@ -70,13 +70,16 @@ Solrcloud 9
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/post -c boamp /share/json'
 
 
+---- Créer collection NESTED et indexer
 
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/solr delete -c nested -p 8983'
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/solr create_collection -c nested -d /share/nested/conf-solr9 -shards 2 -replicationFactor 2 -p 8983'
 
 ./de.sh -c training_9_solr_d1 -u solr -e 'curl "http://localhost:8983/solr/nested/update?wt=json" --data-binary @/share/nested/json/nested-1.json -H "Content-type:application/json"'
-
 ./de.sh -c training_9_solr_d1 -u solr -e 'curl "http://localhost:8983/solr/nested/update?wt=json" --data-binary @/share/nested/json/nested-1-add.json -H "Content-type:application/json"'
+./de.sh -c training_9_solr_d1 -u solr -e 'curl "http://localhost:8983/solr/nested/update?wt=json" --data-binary @/share/nested/json/nested-1-add-empty-company.json -H "Content-type:application/json"'
+./de.sh -c training_9_solr_d1 -u solr -e 'curl "http://localhost:8983/solr/nested/update?wt=json" --data-binary @/share/nested/json/nested-1-empty-company-add-contact.json -H "Content-type:application/json"'
+
 
 OK - http://localhost:8983/solr/nested/select?indent=on&wt=json&q={!parent which="level:company" }+(contact.lastname:Dupuis AND contact.departement:Design)
 KO - http://localhost:8983/solr/nested/select?indent=on&wt=json&q=contact_lastname:Dupuis AND contact_departement:Design
