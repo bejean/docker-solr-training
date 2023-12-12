@@ -69,7 +69,6 @@ Solrcloud 9
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/post -c boamp /share/json_qualif'
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/post -c boamp /share/json'
 
-
 ---- Créer collection NESTED et indexer
 
 ./de.sh -c training_9_solr_d1 -u solr -e 'bin/solr delete -c nested -p 8983'
@@ -80,9 +79,3 @@ Solrcloud 9
 ./de.sh -c training_9_solr_d1 -u solr -e 'curl "http://localhost:8983/solr/nested/update?wt=json" --data-binary @/share/nested/json/nested-1-add-empty-company.json -H "Content-type:application/json"'
 ./de.sh -c training_9_solr_d1 -u solr -e 'curl "http://localhost:8983/solr/nested/update?wt=json" --data-binary @/share/nested/json/nested-1-empty-company-add-contact.json -H "Content-type:application/json"'
 
-
-https://solr.apache.org/guide/solr/latest/indexing-guide/indexing-nested-documents.html
-https://solr.apache.org/guide/solr/latest/indexing-guide/partial-document-updates.html#updating-child-documents
-https://solr.apache.org/guide/solr/latest/query-guide/searching-nested-documents.html
-https://solr.apache.org/guide/solr/latest/query-guide/block-join-query-parser.html
-https://medium.com/@alisazhila/solr-s-nesting-on-solr-s-capabilities-to-handle-deeply-nested-document-structures-50eeaaa4347a

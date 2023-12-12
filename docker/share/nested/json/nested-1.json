@@ -12,6 +12,7 @@
         "contact": [
             {
                 "id": "company1!company1_contact1",
+                "contact.id_compagny": "company1!company1",
                 "level": "contact",
                 "contact.lastname": "Durand",
                 "contact.firstname": "Julien",
@@ -19,6 +20,7 @@
             },
             {
                 "id": "company1!company1_contact2",
+                "contact.id_compagny": "company1!company1",
                 "level": "contact",
                 "contact.lastname": "Dupond",
                 "contact.firstname": "Pierre",
@@ -39,6 +41,7 @@
         "contact": [
             {
                 "id": "company2!company2_contact1",
+                "contact.id_compagny": "company2!company2",
                 "level": "contact",
                 "contact.lastname": "Dupuis",
                 "contact.firstname": "Laura",
@@ -46,6 +49,7 @@
             },
             {
                 "id": "company2!company2_contact2",
+                "contact.id_compagny": "company2!company2",                
                 "level": "contact",
                 "contact.lastname": "Dujardin",
                 "contact.firstname": "Jean",
@@ -66,6 +70,7 @@
         "contact": [
             {
                 "id": "company3!company3_contact1",
+                "contact.id_compagny": "company3!company3",
                 "level": "contact",
                 "contact.lastname": "Dupuis",
                 "contact.firstname": "François",
@@ -73,6 +78,7 @@
             },
             {
                 "id": "company3!company3_contact2",
+                "contact.id_compagny": "company3!company3",
                 "level": "contact",
                 "contact.lastname": "Brel",
                 "contact.firstname": "Jacques",

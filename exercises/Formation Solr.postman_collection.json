@@ -646,7 +646,7 @@
 			"name": "Recherche avancée",
 			"item": [
 				{
-					"name": "Compagnie & contacts -> OK",
+					"name": "Compagnie / contacts -> OK",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -685,7 +685,7 @@
 					"response": []
 				},
 				{
-					"name": "Compagnie & contacts -> KO",
+					"name": "Compagnie / contacts -> KO",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -720,7 +720,7 @@
 					"response": []
 				},
 				{
-					"name": "Contact & Compagnie",
+					"name": "Compagnie / contacts et companie",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -759,7 +759,7 @@
 					"response": []
 				},
 				{
-					"name": "Contact & Compagnie -> OK (JSON DSL)",
+					"name": "Compagnie / contacts -> OK (JSON DSL)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -768,7 +768,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  query: '{!parent which=\"*:* -_nest_path_:*\" }+(contact.lastname:Dupuis AND contact.departement:Design)',\n  limit: 10,\n  \"fields\": \"*,[child]\" \n}",
+							"raw": "{\n  query: '{!parent which=\"*:* -_nest_path_:*\" }+(contact.lastname:Dupuis AND contact.departement:Design)',\n  limit: 10, \n  \"fields\": \"*,[child]\" \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -792,7 +792,7 @@
 					"response": []
 				},
 				{
-					"name": "Contact & Compagnie (JSON DSL)",
+					"name": "Compagnie / contacts et companie (JSON DSL)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -801,7 +801,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  query: \"_query_:\\\"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Dupuis)\\\" AND _query_:\\\"{!dismax qf=sector}Transport\\\"\",\n  limit: 10,\n  fields: \"*,[child]\"\n}",
+							"raw": "{\n  query: \"_query_:\\\"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Dupuis)\\\" AND _query_:\\\"{!dismax qf=sector}Transport\\\"\",\n  limit: 10, \n  fields: \"*,[child]\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -831,7 +831,7 @@
 					"response": []
 				},
 				{
-					"name": "Contact & Compagnie (JSON DSL) - Alternative",
+					"name": "Compagnie / contacts et companie (JSON DSL) - Alternative",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -840,7 +840,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!edismax qf=sector}Transport OR Energie\", \n        \"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Hinault OR contact.lastname:Jalabert)\" \n      ],\n      \"must_not\": [\n        \"{!lucene}city:Sochaux\"\n      ]      \n    }\n  },\n  \"fields\": \"*,[child]\",\n  \"limit\": 10\n}",
+							"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!edismax qf=sector}Transport OR Energie\", \n        \"{!parent which='*:* -_nest_path_:*' }+(contact.lastname:Hinault OR contact.lastname:Jalabert)\" \n      ],\n      \"must_not\": [\n        \"{!lucene}city:Sochaux\"\n      ]     \n    }\n  },\n  \"fields\": \"*,[child]\",\n  \"limit\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -863,6 +863,57 @@
 								{
 									"key": "debug",
 									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contacts / compagnie (JSON DSL)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!child of='*:* -_nest_path_:*' }+(sector:Energie)\",\n        \"contact.lastname:Dupuis\"\n      ]   \n    }\n  },\n  \"fields\": \"*,compagny:[subquery]\",\n  \"limit\": 10,\n  \"facet\": {\n    \"departement\" : {\n      \"type\": \"terms\",\n      \"field\": \"contact.departement\",\n      \"limit\": 3\n    },\n    \"lastname\" : {\n      \"type\": \"terms\",\n      \"field\": \"contact.lastname\",\n      \"limit\": 3\n    },\n    \"sector\" : {\n      \"type\": \"terms\",\n      \"field\": \"sector\",\n      \"limit\": 3\n    }   \n  }  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8983/solr/nested/query?debug=true&debug.explain.structured=true&compagny.fl=*&compagny.q={!terms f=id v=$row.contact.id_compagny}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8983",
+							"path": [
+								"solr",
+								"nested",
+								"query"
+							],
+							"query": [
+								{
+									"key": "debug",
+									"value": "true"
+								},
+								{
+									"key": "debug.explain.structured",
+									"value": "true"
+								},
+								{
+									"key": "compagny.fl",
+									"value": "*"
+								},
+								{
+									"key": "compagny.q",
+									"value": "{!terms f=id v=$row.contact.id_compagny}"
 								}
 							]
 						}

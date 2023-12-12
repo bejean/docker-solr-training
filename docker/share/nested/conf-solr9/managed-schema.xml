@@ -136,6 +136,8 @@
     <field name="contact.lastname" type="string" indexed="true" stored="true" multiValued="false"/>   
     <field name="contact.firstname" type="string" indexed="true" stored="true" multiValued="false"/>   
     <field name="contact.departement" type="string" indexed="true" stored="true" multiValued="true"/>   
+    <field name="contact.id_compagny" type="string" indexed="true" stored="true" multiValued="false"/>   
+    
 
     <field name="spelling" type="text_general" indexed="true" stored="true" multiValued="true"/>
 

@@ -5,6 +5,7 @@
         "contact": { "add": 
             { 
                 "id": "company1!company1_contact3",
+                "contact.id_compagny": "company1!company1",
                 "level": "contact",
                 "contact.lastname": "Jalabert",
                 "contact.firstname": "Laurent",
