@@ -1,0 +1,125 @@
+[
+    {
+        "id": "pinot!pinot",
+        "level": "contact",
+        "nom": "Pinot",
+        "prenom": "Thibault",
+        "tags": ["tag1", "tag2"],
+        "nationalite": ["Française"],
+        "telephone": ["00 00 00 00 01"],
+        "societe": [
+            {
+                "id": "pinot!pinot_fdj",
+                "level": "societe",
+                "societe.nom": "FDJ",
+                "societe.tags": ["jeux", "paris"],
+                "societe.date_visite": "2021-05-17T00:00:00Z",
+                "user": [
+                    {
+                        "id": "pinot!pinot_fdj_bejean",
+                        "level": "user",
+                        "user.nom": "Bejean",
+                        "user.prenom": "Dominique",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    },
+                    {
+                        "id": "pinot!pinot_fdj_barse",
+                        "level": "user",
+                        "user.nom": "Barse",
+                        "user.prenom": "Juliette",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    }
+                ]
+            },
+            {
+                "id": "pinot!pinot_groupama",
+                "societe.nom": "Groupama",
+                "societe.tags": ["assurance"],
+                "societe.date_visite": "2022-05-17T00:00:00Z",
+                "user": [
+                    {
+                        "id": "pinot!pinot_groupama_boyreau",
+                        "level": "user",
+                        "user.nom": "Boyreau",
+                        "user.prenom": "Gilbert",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    },
+                    {
+                        "id": "pinot!pinot_groupama_barse",
+                        "level": "user",
+                        "user.nom": "Barse",
+                        "user.prenom": "Juliette",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    }
+                ]
+            }
+        ],
+    },
+    {
+        "id": "jalabert!jalabert",
+        "level": "contact",
+        "nom": "Jalabert",
+        "prenom": "Laurent",
+        "tags": ["tag3", "tag2", "tag4"],
+        "nationalite": ["Française"],
+        "telephone": ["00 00 00 00 02"],
+        "societe": [
+            {
+                "id": "jalabert!jalabert_once",
+                "level": "societe",
+                "societe.nom": "Once",
+                "societe.tags": ["jeux", "paris"],
+                "societe.date_visite": "2021-05-17T00:00:00Z",
+                "user": [
+                    {
+                        "id": "jalabert!jalabert_once_debonne",
+                        "level": "user",
+                        "user.nom": "Debonne",
+                        "user.prenom": "Eric",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    }
+                ]
+            },
+            {
+                "id": "jalabert!jalabert_toshiba",
+                "societe.nom": "Toshiba",
+                "societe.tags": ["vidéo"],
+                "societe.date_visite": "2022-05-17T00:00:00Z",
+                "user": [
+                    {
+                        "id": "jalabert!jalabert_toshiba_delin",
+                        "level": "user",
+                        "user.nom": "Delin",
+                        "user.prenom": "Louis",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    },
+                    {
+                        "id": "jalabert!jalabert_toshiba_bruit",
+                        "level": "user",
+                        "user.nom": "Bruit",
+                        "user.prenom": "Gabriel",
+                        "user.date_achat": "2023-01-17T00:00:00Z"
+                    }
+                ]
+            }
+        ],
+    },
+    {
+        "id": "hinault!hinault",
+        "level": "contact",
+        "nom": "Hinault",
+        "prenom": "Bernard",
+        "tags": ["tag5", "tag1"],
+        "nationalite": ["Française"],
+        "telephone": ["00 00 00 00 03"],
+        "societe": [
+            {
+                "id": "hinault!hinault_renault",
+                "level": "societe",
+                "societe.nom": "Renault",
+                "societe.tags": ["transport"],
+                "societe.date_visite": "2021-05-17T00:00:00Z"
+            }
+        ],
+    }    
+]

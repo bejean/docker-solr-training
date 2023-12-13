@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "6a1a0262-b7cd-4660-aadc-f216ddbc0804",
+		"name": "HDTM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!lucene}*:*\"\n      ]\n    }\n  },\n  \"filter\" : \"level:contact\",\n  \"fields\": \"*,[child]\",\n  \"limit\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8983/solr/contacts/query?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8983",
+					"path": [
+						"solr",
+						"contacts",
+						"query"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All + Info User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!lucene}*:*\"\n      ]\n    }\n  },\n  \"filter\" : \"level:contact\",\n  \"fields\": \"*,[child childFilter=user.nom:Bejean]\",\n  \"limit\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8983/solr/contacts/query?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8983",
+					"path": [
+						"solr",
+						"contacts",
+						"query"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query + Info User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!lucene}*:*\"\n      ]\n    }\n  },\n  \"filter\" : [\"level:contact\", \"tags:tag1\"],\n  \"fields\": \"*,[child childFilter=user.nom:Bejean]\",\n  \"limit\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8983/solr/contacts/query?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8983",
+					"path": [
+						"solr",
+						"contacts",
+						"query"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Only bought per User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"bool\": {\n      \"must\": [\n        \"{!lucene}*:*\",\n        \"{!parent which='*:* -_nest_path_:*' }+(user.nom:Bejean)\" \n      ]\n    }\n  },\n  \"filter\" : [\"level:contact\"],\n  \"fields\": \"*,[child childFilter=user.nom:Bejean]\",\n  \"limit\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8983/solr/contacts/query?debug=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8983",
+					"path": [
+						"solr",
+						"contacts",
+						"query"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
