@@ -300,16 +300,3 @@
 SOLR_OPTS="$SOLR_OPTS -Dsolr.allowPaths=/share/backup"
 #SOLR_AUTH_TYPE="basic"
 #SOLR_AUTHENTICATION_OPTS="-Dbasicauth=admin:admin"
-
-
-# The following lines added by ./solr for enabling BasicAuth
-# SOLR_AUTH_TYPE="basic"
-# SOLR_AUTHENTICATION_OPTS="-Dsolr.httpclient.config=/var/solr/data/basicAuth.conf"
-
-# The following lines added by ./solr for enabling BasicAuth
-# SOLR_AUTH_TYPE="basic"
-# SOLR_AUTHENTICATION_OPTS="-Dsolr.httpclient.config=/var/solr/data/basicAuth.conf"
-
-# The following lines added by ./solr for enabling BasicAuth
-SOLR_AUTH_TYPE="basic"
-SOLR_AUTHENTICATION_OPTS="-Dsolr.httpclient.config=/var/solr/data/basicAuth.conf"
